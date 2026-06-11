@@ -106,7 +106,7 @@ function ensureHighlightStyle() {
   const style = document.createElement('style')
   style.id = HIGHLIGHT_STYLE_ID
   style.textContent = [
-    '::highlight(comment-highlight) {',
+    ':highlight(comment-highlight) {',
     '  text-decoration: underline dashed;',
     '  text-decoration-color: color-mix(in srgb, var(--color-accent, #33a6b8) 50%, transparent);',
     '  text-underline-offset: 2px;',
