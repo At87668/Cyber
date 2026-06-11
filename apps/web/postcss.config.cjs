@@ -1,5 +1,3 @@
-const tailwind = require('@tailwindcss/postcss')
-
 function highlightFix() {
   return {
     postcssPlugin: 'postcss-highlight-fix',
@@ -18,5 +16,9 @@ function highlightFix() {
 highlightFix.postcss = true
 
 module.exports = {
-  plugins: [highlightFix, tailwind()],
+  plugins: [
+    highlightFix,
+    'tailwindcss',
+    'autoprefixer',
+  ],
 }
