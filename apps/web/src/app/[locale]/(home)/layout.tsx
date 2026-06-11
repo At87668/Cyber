@@ -7,6 +7,9 @@ import { apiClient } from '~/lib/request'
 import { definePrerenderPage, requestErrorHandler } from '~/lib/request.server'
 
 import { ActivityScreen } from './components/ActivityScreen'
+import { CyberShowcase } from './components/CyberShowcase'
+import { CyberStats } from './components/CyberStats'
+import { CyberTech } from './components/CyberTech'
 import { Hero } from './components/Hero'
 import { HomePageTimeLine } from './components/HomePageTimeLine'
 import { Windsock } from './components/Windsock'
@@ -37,6 +40,9 @@ export default definePrerenderPage()({
     return (
       <QueryHydrate state={dehydrateState}>
         <Hero />
+        <CyberStats />
+        <CyberTech />
+        <CyberShowcase />
         <ActivityScreen />
         <HomePageTimeLine />
         <Windsock />
