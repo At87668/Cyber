@@ -1,13 +1,11 @@
 import { ThemeSwitcher } from '~/components/ui/theme-switcher'
+import { Link } from '~/i18n/navigation'
 
 import { FooterInfo } from './FooterInfo'
 import { LocaleSwitcher } from './LocaleSwitcher'
 
 export const Footer = () => (
-  <footer
-    data-hide-print
-    className="relative z-[1] mt-32 border-t bg-[var(--footer-bg)] py-6 text-base-content/80"
-  >
+  <footer data-hide-print className="cyber-footer relative z-[1] mt-32 py-6">
     <div className="px-4 sm:px-8">
       <div className="relative mx-auto max-w-7xl lg:px-8">
         <FooterInfo />
@@ -17,6 +15,17 @@ export const Footer = () => (
           <ThemeSwitcher />
         </div>
       </div>
+    </div>
+
+    <div className="cyber-footer__links" style={{ marginTop: 30 }}>
+      <Link href="/">{'[ HOME_UPLINK ]'}</Link>
+      <Link href="/posts">{'[ POSTS_NODE ]'}</Link>
+      <Link href="/notes">{'[ NOTES_NODE ]'}</Link>
+      <Link href="/friends">{'[ FRIENDS_LINK ]'}</Link>
+    </div>
+
+    <div className="cyber-footer__copy">
+      {'> SYSTEM STATUS: ONLINE // END OF LINE'}
     </div>
   </footer>
 )
