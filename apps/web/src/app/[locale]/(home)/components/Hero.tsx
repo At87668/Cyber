@@ -5,18 +5,16 @@ import clsx from 'clsx'
 import { m } from 'motion/react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { createElement, useRef } from 'react'
+import { useRef } from 'react'
 
+import { GlitchText, Typewriter } from '~/components/modules/cyber'
 import { isSupportIcon, SocialIcon } from '~/components/modules/home/SocialIcon'
 import {
   fetchHitokoto,
   SentenceType,
 } from '~/components/modules/shared/Hitokoto'
 import { MotionButtonBase } from '~/components/ui/button'
-import {
-  BottomToUpTransitionView,
-  TextUpTransitionView,
-} from '~/components/ui/transition'
+import { BottomToUpTransitionView } from '~/components/ui/transition'
 import { softBouncePreset } from '~/constants/spring'
 import { clsxm } from '~/lib/helper'
 import { noopObj } from '~/lib/noop'
@@ -27,16 +25,30 @@ import {
 
 import { TwoColumnLayout } from './TwoColumnLayout'
 
+const DEFAULT_TERMINAL_LINE =
+  'Crafting code with purpose. Building the future with tech.'
+
 export const Hero = () => {
   const tCommon = useTranslations('common')
   const { title, description } = useAppConfigSelector((config) => ({
     ...config.hero,
   }))!
   const siteOwner = useAggregationSelector((agg) => agg.user)
-  const { avatar, socialIds } = siteOwner || {}
+  const { avatar, socialIds, name } = siteOwner || {}
 
   const titleAnimateD =
     title.template.reduce((acc, cur) => acc + (cur.text?.length || 0), 0) * 50
+
+  // The user-configured title is rendered as a glitching headline.
+  // Fallback to the site owner name if no template was provided.
+  const glitchText =
+    title.template
+      .map((t) => t.text ?? '')
+      .join(' ')
+      .trim() ||
+    name ||
+    'NEXUS'
+
   return (
     <div className="mx-auto mt-20 min-w-0 max-w-7xl overflow-hidden lg:mt-[-4.5rem] lg:h-dvh lg:min-h-[800px] lg:px-8">
       <TwoColumnLayout
@@ -50,25 +62,20 @@ export const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={softBouncePreset}
           >
-            {title.template.map((t, i) => {
-              const { type } = t
-              const prevAllTextLength = title.template
-                .slice(0, i)
-                .reduce((acc, cur) => acc + (cur.text?.length || 0), 0)
-              return createElement(
-                type,
-                { key: i, className: t.class },
-                t.text && (
-                  <TextUpTransitionView
-                    initialDelay={prevAllTextLength * 0.05}
-                    eachDelay={0.05}
-                  >
-                    {t.text}
-                  </TextUpTransitionView>
-                ),
-              )
-            })}
+            <GlitchText
+              as="h1"
+              text={glitchText}
+              className="text-5xl lg:text-6xl"
+            />
           </m.div>
+
+          {/* System status pill */}
+          <div className="mt-8 text-center lg:text-left">
+            <div className="cyber-status">
+              <span className="cyber-status__dot" />
+              <span>SYSTEM STATUS: ONLINE // NEXUS INTEGRATED</span>
+            </div>
+          </div>
 
           <BottomToUpTransitionView
             delay={titleAnimateD + 500}
@@ -78,7 +85,7 @@ export const Hero = () => {
             <span className="opacity-80">{description}</span>
           </BottomToUpTransitionView>
 
-          <ul className="center mx-[60px] mt-8 flex flex-wrap gap-4 gap-y-6 lg:mx-auto lg:mt-28 lg:justify-start lg:gap-y-4">
+          <ul className="center mx-[60px] mt-8 flex flex-wrap gap-4 gap-y-6 lg:mx-auto lg:mt-8 lg:justify-start lg:gap-y-4">
             {Object.entries(socialIds || noopObj).map(
               ([type, id]: any, index) => {
                 if (!isSupportIcon(type)) return null
@@ -98,8 +105,22 @@ export const Hero = () => {
         </>
 
         <div
-          className={clsx('lg:size-[300px]', 'size-[200px]', 'mt-24 lg:mt-0')}
+          className={clsx(
+            'lg:size-[300px]',
+            'size-[200px]',
+            'mt-24 lg:mt-0',
+            'relative',
+          )}
         >
+          {/* Hex / scanline ring around the avatar */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 rounded-full"
+            style={{
+              boxShadow:
+                '0 0 0 1px var(--cyber-cyan), 0 0 25px rgba(0,243,255,0.45), inset 0 0 25px rgba(188,19,254,0.25)',
+            }}
+          />
           <Image
             height={300}
             width={300}
@@ -122,6 +143,10 @@ export const Hero = () => {
             'center text-neutral-800/80 dark:text-neutral-200/80',
           )}
         >
+          <div className="cyber-terminal-line text-center">
+            {'> '}
+            <Typewriter text={description || DEFAULT_TERMINAL_LINE} />
+          </div>
           <FootHitokoto />
           <span className="mt-8 animate-bounce">
             <i className="i-mingcute-right-line rotate-90 text-2xl" />
