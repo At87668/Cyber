@@ -209,7 +209,12 @@ export default async function LocaleLayout({ children, params }: Props) {
     <>
       <AppFeatureProvider tmdb={!!process.env.TMDB_API_KEY}>
         <HydrateuserAuthProvider isLogged={userAuth} />
-        <html lang={locale} className="noise themed" suppressHydrationWarning>
+        <html
+          lang={locale}
+          className="noise themed cyber-dark"
+          data-cyber="true"
+          suppressHydrationWarning
+        >
           <head>
             <PublicEnvScript />
             <Global />

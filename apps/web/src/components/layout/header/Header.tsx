@@ -31,7 +31,7 @@ const MemoedHeader = memo(() => {
     >
       <div
         className={clsxm(
-          'relative mx-auto w-[calc(100vw-var(--removed-body-scroll-bar-size,0px))] grid h-full min-h-0 max-w-7xl grid-cols-[4.5rem_auto_4.5rem] lg:px-8',
+          'cyber-header relative mx-auto w-[calc(100vw-var(--removed-body-scroll-bar-size,0px))] grid h-full min-h-0 max-w-7xl grid-cols-[4.5rem_auto_4.5rem] lg:px-8',
           'header--grid',
         )}
       >

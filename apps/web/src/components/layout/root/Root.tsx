@@ -1,4 +1,5 @@
 import { ClientOnly } from '~/components/common/ClientOnly'
+import { CyberEffectsLayer } from '~/components/modules/cyber/CyberEffectsLayer'
 import { FABContainer } from '~/components/ui/fab'
 
 import { Content } from '../content/Content'
@@ -15,6 +16,7 @@ export const Root: Component = ({ children }) => (
     <ClientOnly>
       <FABContainer />
       <RootDataAttributeBinder />
+      <CyberEffectsLayer />
     </ClientOnly>
   </>
 )
