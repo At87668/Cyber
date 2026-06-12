@@ -5,22 +5,22 @@ platform:
   arch: amd64
 
 volumes:
-  - name: shiro
+  - name: cyber
     host:
-      path: /drone/tmp/shiro
-  - name: shiro-dist
+      path: /drone/tmp/cyber
+  - name: cyber-dist
     host:
-      path: /drone/tmp/shiro-dist
-  - name: shiro-env
+      path: /drone/tmp/cyber-dist
+  - name: cyber-env
     host:
-      path: /home/innei/docker-compose/drone/public/shiro/.env
+      path: /home/innei/docker-compose/drone/public/cyber/.env
 
   - name: node_modules_cache
     host:
       path: /drone/tmp/cache
   - name: cache
     host:
-      path: /drone/tmp/shiro_next_cache
+      path: /drone/tmp/cyber_next_cache
 
 steps:
   - name: restore-cache
@@ -41,12 +41,12 @@ steps:
     commands:
       - 'npm i -g pnpm'
       - 'pnpm install --no-frozen-lockfile'
-      - 'pnpm --filter @shiro/web build:ci'
+      - 'pnpm --filter @cyber/web build:ci'
 
     depends_on:
       - restore-cache
     volumes:
-      - name: shiro-env
+      - name: cyber-env
         path: /drone/src/apps/web/.env
       - name: cache
         path: /drone/src/apps/web/.next
@@ -73,7 +73,7 @@ steps:
       - 'apk add zip'
       - 'cd apps/web && sh ./standalone-bundle.sh'
     volumes:
-      - name: shiro-dist
+      - name: cyber-dist
         path: /drone/src/assets
       - name: cache
         path: /drone/src/apps/web/.next
@@ -95,9 +95,9 @@ platform:
   arch: amd64
 
 volumes:
-  - name: shiro-dist
+  - name: cyber-dist
     host:
-      path: /drone/tmp/shiro-dist
+      path: /drone/tmp/cyber-dist
 
 steps:
   - name: transfer file
@@ -110,14 +110,14 @@ steps:
       key:
         from_secret: ssh_key
       port: 22
-      target: /home/deploy/shiro
+      target: /home/deploy/cyber
       source:
         - assets/release.zip
       rm_target: true
       strip_components: 1
       debug: true
     volumes:
-      - name: shiro-dist
+      - name: cyber-dist
         path: /drone/src/assets
 
   - name: deploy
@@ -132,7 +132,7 @@ steps:
       port: 22
       script:
         - '\npm install --os=linux --cpu=x64 sharp --registry=https://registry.npmmirror.com'
-        - cd ~/shiro
+        - cd ~/cyber
         - unzip -o release.zip
         - rm release.zip
         - ls

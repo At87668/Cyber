@@ -2,7 +2,7 @@ import { $fetch } from 'ofetch'
 
 const gh_token = process.env.GH_TOKEN
 
-const namespace = 'innei-dev/Shiroi'
+const namespace = 'innei-dev/Cyberi'
 
 const myFetch = $fetch.create({
   headers: {

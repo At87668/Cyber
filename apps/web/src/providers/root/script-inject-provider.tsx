@@ -10,7 +10,7 @@ export const ScriptInjectProvider = async () => {
     <>
       {css && (
         <style
-          id="shiro-custom-css"
+          id="cyber-custom-css"
           dangerouslySetInnerHTML={{
             __html: css.join('\n'),
           }}
@@ -18,7 +18,7 @@ export const ScriptInjectProvider = async () => {
       )}
       {js && (
         <script
-          id="shiro-custom-js"
+          id="cyber-custom-js"
           dangerouslySetInnerHTML={{
             __html: js.join('\n'),
           }}

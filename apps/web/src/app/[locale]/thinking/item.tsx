@@ -218,7 +218,7 @@ const RefPreview: FC<{ refModel: any }> = (props) => {
       <Divider className="my-4 w-12 bg-current opacity-50" />
       <p className="flex items-center space-x-2 opacity-80">
         {t('published_at')} <i className="i-mingcute-link-3-line" />
-        <PeekLink href={url} className="shiro-link--underline">
+        <PeekLink href={url} className="cyber-link--underline">
           {title}
         </PeekLink>
       </p>

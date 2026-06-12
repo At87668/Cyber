@@ -7,7 +7,7 @@ import createNextIntlPlugin from 'next-intl/plugin'
 
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts')
 
-process.title = 'Shiro (NextJS)'
+process.title = 'Cyber (NextJS)'
 
 const env = config().parsed || {}
 const isProd = process.env.NODE_ENV === 'production'
@@ -133,7 +133,7 @@ let nextConfig = {
 //       silent: true,
 //
 //       org: 'inneis-site',
-//       project: 'Shiro',
+//       project: 'Cyber',
 //     },
 //     {
 //       // For all available options, see:

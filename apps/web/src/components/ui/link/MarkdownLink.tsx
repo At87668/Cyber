@@ -73,7 +73,7 @@ export const MarkdownLink: FC<{
         <Favicon href={href} noIcon={noIcon} />
       )}
       <a
-        className="shiro-link--underline"
+        className="cyber-link--underline"
         href={href}
         target="_blank"
         onClick={handleRedirect}
@@ -97,7 +97,7 @@ export const MarkdownLink: FC<{
         href={href}
         target="_blank"
         rel="noreferrer"
-        className="shiro-link--underline"
+        className="cyber-link--underline"
       >
         <span>{href}</span>
       </a>

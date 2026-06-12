@@ -15,7 +15,7 @@ type GlobalComponents = typeof GlobalComponentMap
 
 declare const window: any
 
-const prefix = 'shiro'
+const prefix = 'cyber'
 export const getGlobalComponent = (name: keyof GlobalComponents) =>
   window[prefix][name] as GlobalComponents[keyof GlobalComponents]
 

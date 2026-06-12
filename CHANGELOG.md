@@ -145,7 +145,7 @@
 * toc fab sheet close transition ([94aa73e](https://github.com/Innei/sprightly/commit/94aa73e2829b365ff17106b585eaa5ec052744aa))
 * toc scroller and mask ([9b70e9b](https://github.com/Innei/sprightly/commit/9b70e9bef89d3f9cdc526c67629b9ac10be18a92))
 * typing ([b1f9ee2](https://github.com/Innei/sprightly/commit/b1f9ee2d3c272a6272b5206c74b28efe47acbc16))
-* when comand pressed, skip peek, fixed  Innei/Shiro[#436](https://github.com/Innei/sprightly/issues/436) ([27b0fdc](https://github.com/Innei/sprightly/commit/27b0fdca0d3e7dfa19e7c795266f47cd598709bb))
+* when comand pressed, skip peek, fixed  At87668/Cyber[#436](https://github.com/Innei/sprightly/issues/436) ([27b0fdc](https://github.com/Innei/sprightly/commit/27b0fdca0d3e7dfa19e7c795266f47cd598709bb))
 * wrapped element `x,y` detection ([8e37913](https://github.com/Innei/sprightly/commit/8e37913eee703b4a23bc71610e23eb48b0269f7a))
 * wrapped element calcation size and position ([86a702c](https://github.com/Innei/sprightly/commit/86a702cc19c331d892bb62e818054a0c6f7b7cc3))
 

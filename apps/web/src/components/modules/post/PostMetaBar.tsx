@@ -71,7 +71,7 @@ export const PostMetaBar: Component<{
                   return (
                     <Fragment key={tag}>
                       <button
-                        className="shiro-link--underline"
+                        className="cyber-link--underline"
                         onClick={() =>
                           present({
                             content: () => <TagDetailModal name={tag} />,

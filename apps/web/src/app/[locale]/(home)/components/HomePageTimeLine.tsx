@@ -239,7 +239,7 @@ export const HomePageTimeLine = () => {
                                 }
                               >
                                 <Link
-                                  className="shiro-link--underline"
+                                  className="cyber-link--underline"
                                   href={
                                     'nid' in item
                                       ? routeBuilder(Routes.Note, {

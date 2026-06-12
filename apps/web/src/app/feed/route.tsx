@@ -36,7 +36,7 @@ export async function GET() {
 
   const [{ author, data, url }, agg] = await Promise.all([
     apiClient.aggregate.proxy.feed.get<RSSProps>(),
-    apiClient.aggregate.getAggregateData<AppThemeConfig>('shiro'),
+    apiClient.aggregate.getAggregateData<AppThemeConfig>('cyber'),
   ])
 
   const { title, description } = agg.seo
@@ -80,7 +80,7 @@ export async function GET() {
     feed_url: `${url}/feed`,
     language: 'zh-CN',
     image_url: imageUrl,
-    generator: 'Shiro (https://github.com/Innei/Shiro)',
+    generator: 'Cyber (https://github.com/At87668/Cyber)',
     pubDate: now.toUTCString(),
 
     custom_elements,
@@ -100,7 +100,7 @@ export async function GET() {
         return ReactDOM.renderToString(
           <div>
             <blockquote>
-              该渲染由 Shiro API 生成，可能存在排版问题，最佳体验请前往：
+              该渲染由 Cyber API 生成，可能存在排版问题，最佳体验请前往：
               <a href={`${xss(item.link)}`}>{xss(item.link)}</a>
             </blockquote>
             {compiler(item.text, {

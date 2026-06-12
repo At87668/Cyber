@@ -15,11 +15,11 @@
     width: 0 !important;
     height: 0 !important;
   }
-  .shiro-timeline a {
+  .cyber-timeline a {
     @apply no-underline!;
   }
-  .shiro-link--underline,
-  .shiro-timeline a {
+  .cyber-link--underline,
+  .cyber-timeline a {
     color: currentColor;
     text-decoration: underline;
     text-underline-offset: 3px;
@@ -55,7 +55,7 @@
     }
   }
 
-  .shiro-timeline {
+  .cyber-timeline {
     position: relative;
 
     & a {

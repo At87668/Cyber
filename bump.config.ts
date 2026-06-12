@@ -25,6 +25,6 @@ export default defineConfig({
   all: true,
   /** 交互确认，看清将要 bump 的版本再继续 */
   confirm: true,
-  /** 只 bump 根与 packages/*，不 bump apps（含 @shiro/web） */
+  /** 只 bump 根与 packages/*，不 bump apps（含 @cyber/web） */
   files: ['package.json', 'pnpm-lock.yaml', 'packages/**/package.json'],
 })

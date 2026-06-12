@@ -9,7 +9,7 @@ rm -rf cache
 cp -r ../public ./standalone/public
 
 cd ./standalone
-echo ';process.title = "Shiro (NextJS)"' >>server.js
+echo ';process.title = "Cyber (NextJS)"' >>server.js
 mv ../static/ ./.next/static
 
 cp $CWD/ecosystem.standalone.config.cjs ./ecosystem.config.js

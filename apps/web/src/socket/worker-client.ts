@@ -72,7 +72,7 @@ class SocketWorker {
         ? (() => {
             try {
               const sw = new SharedWorker(workerUrl, {
-                name: 'shiro-ws-worker',
+                name: 'cyber-ws-worker',
                 type: 'module',
               })
 

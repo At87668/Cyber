@@ -1,4 +1,4 @@
-name: Update Hash in shiroi-vercel
+name: Update Hash in cyberi-vercel
 
 on:
   push:
@@ -9,8 +9,8 @@ on:
 jobs:
   update-hash:
     runs-on: ubuntu-latest
-    # 只在 innei-dev/shiroi 仓库中运行
-    if: github.repository == 'innei-dev/shiroi'
+    # 只在 innei-dev/cyberi 仓库中运行
+    if: github.repository == 'innei-dev/cyberi'
 
     steps:
       - name: Checkout current repository
@@ -32,11 +32,11 @@ jobs:
           echo "Current commit hash: $current_hash"
           echo "Current commit message: $commit_message"
 
-      - name: Clone shiroi-vercel repository
+      - name: Clone cyberi-vercel repository
         run: |
           # 使用 PAT 克隆目标仓库
-          git clone https://${{ secrets.PAT }}@github.com/innei-dev/shiroi-vercel.git shiroi-vercel-repo
-          cd shiroi-vercel-repo
+          git clone https://${{ secrets.PAT }}@github.com/innei-dev/cyberi-vercel.git cyberi-vercel-repo
+          cd cyberi-vercel-repo
 
           # 配置 git 用户信息
           git config user.name "github-actions[bot]"
@@ -44,7 +44,7 @@ jobs:
 
       - name: Update HASH file
         run: |
-          cd shiroi-vercel-repo
+          cd cyberi-vercel-repo
 
           # 更新 HASH 文件内容为当前仓库的 commit hash
           echo "${{ steps.commit_info.outputs.hash }}" > HASH
@@ -64,6 +64,6 @@ jobs:
 
       - name: Summary
         run: |
-          echo "✅ Successfully updated HASH in shiroi-vercel repository"
+          echo "✅ Successfully updated HASH in cyberi-vercel repository"
           echo "📝 Updated hash: ${{ steps.commit_info.outputs.hash }}"
           echo "💬 Commit message: ${{ steps.commit_info.outputs.message }}"

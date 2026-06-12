@@ -31,7 +31,7 @@ export const PostRelated: FC<{
           const href = `/posts/${post.category.slug}/${post.slug}`
           return (
             <li key={href}>
-              <PeekLink href={href} className="shiro-link--underline">
+              <PeekLink href={href} className="cyber-link--underline">
                 {post.title}
               </PeekLink>
             </li>

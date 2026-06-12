@@ -103,7 +103,7 @@ const PoweredBy = async ({ className }: { className?: string }) => {
         triggerElement={
           <StyledLink
             className="cursor-help"
-            href="https://github.com/innei/Shiro"
+            href="https://github.com/innei/Cyber"
             target="_blank"
           >
             白
@@ -112,11 +112,11 @@ const PoweredBy = async ({ className }: { className?: string }) => {
       >
         <div className="space-y-2">
           <p>
-            {t.rich('shiroi_closed_source', {
+            {t.rich('cyberi_closed_source', {
               link: (chunks) => (
                 <StyledLink
                   className="underline"
-                  href="https://github.com/innei/Shiro"
+                  href="https://github.com/innei/Cyber"
                   target="_blank"
                 >
                   {chunks}
@@ -125,7 +125,7 @@ const PoweredBy = async ({ className }: { className?: string }) => {
             })}
           </p>
           <p>
-            {t.rich('shiroi_get_via', {
+            {t.rich('cyberi_get_via', {
               link: (chunks) => (
                 <MarkdownLink
                   popper={false}

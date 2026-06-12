@@ -34,7 +34,7 @@ export const GET = async (req: NextRequest) => {
   const headers = new Headers()
   headers.set(
     'User-Agent',
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko), Shiro',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko), Cyber',
   )
   headers.set('Authorization', `Bearer ${process.env.TMDB_API_KEY}`)
 

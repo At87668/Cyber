@@ -28,8 +28,8 @@ export const OwnerStatus = () => {
   const t = useTranslations('common')
   const pageIsActive = usePageIsActive()
   const { data: statusFromRequest, isLoading: statusLoading } = useQuery({
-    queryKey: ['shiro-status'],
-    queryFn: () => apiClient.proxy.fn.shiro.status.get<TOwnerStatus | null>(),
+    queryKey: ['cyber-status'],
+    queryFn: () => apiClient.proxy.fn.cyber.status.get<TOwnerStatus | null>(),
     refetchOnWindowFocus: 'always',
     refetchOnMount: 'always',
     enabled: pageIsActive,
@@ -178,7 +178,7 @@ const SettingStatusModalContent = () => {
     const currentValues = formRef.current.getCurrentValues()
     setIsLoading(true)
 
-    await apiClient.serverless.proxy.shiro.status
+    await apiClient.serverless.proxy.cyber.status
       .post({
         data: {
           ...currentValues,
@@ -202,7 +202,7 @@ const SettingStatusModalContent = () => {
 
   const handleReset = useCallback(async () => {
     setIsLoading(true)
-    await apiClient.serverless.proxy.shiro.status.delete().finally(() => {
+    await apiClient.serverless.proxy.cyber.status.delete().finally(() => {
       setIsLoading(false)
     })
     toast.success(t('status_set_success'))

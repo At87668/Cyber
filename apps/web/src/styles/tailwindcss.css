@@ -107,7 +107,7 @@ html {
 }
 
 html body {
-  @apply max-w-screen overflow-x-hidden;
+  @apply w-screen overflow-x-hidden;
 }
 
 @media print {
@@ -123,8 +123,6 @@ html body {
 } */
 
 .prose {
-  @apply dark:prose-invert;
-
   max-width: 100% !important;
   font-size: 1.1rem;
   text-autospace: normal;

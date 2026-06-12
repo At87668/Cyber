@@ -54,7 +54,7 @@ export const ActivityRecent = () => {
 
       {isLoading ? (
         <div className="relative h-[400px] max-h-[80vh]">
-          <ul className="shiro-timeline mt-4 flex animate-pulse flex-col pb-4 pl-2 text-slate-200 dark:text-neutral-700!">
+          <ul className="cyber-timeline mt-4 flex animate-pulse flex-col pb-4 pl-2 text-slate-200 dark:text-neutral-700!">
             {Array.from({ length: 6 })
               .fill(null)
               .map((_, i) => (
@@ -76,7 +76,7 @@ export const ActivityRecent = () => {
           mask
           rootClassName="h-[400px] relative max-h-[80vh]"
         >
-          <ul className="shiro-timeline mt-4 flex flex-col pb-8 pl-2">
+          <ul className="cyber-timeline mt-4 flex flex-col pb-8 pl-2">
             {flatData.map((activity) => (
               <li
                 key={`${activity.bizType}-${activity.id}-${activity.created}`}

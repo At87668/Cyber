@@ -1,10 +1,10 @@
 {
-  "name": "shiro",
+  "name": "cyber",
   "private": true,
   "type": "module",
   "scripts": {
     "build": "turbo build",
-    "dev": "turbo dev --filter @shiro/web",
+    "dev": "turbo dev --filter @cyber/web",
     "lint": "turbo lint",
     "prepare": "pnpm exec simple-git-hooks",
     "release": "bumpp -r",

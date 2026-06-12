@@ -22,7 +22,7 @@ export const fetchAggregationData = async () => {
       }
     >(apiClient.aggregate.proxy.toString(true), {
       params: {
-        theme: 'shiro',
+        theme: 'cyber',
       },
     }).then(simpleCamelcaseKeys)) as AggregateRoot & {
       theme: AppThemeConfig
@@ -37,7 +37,7 @@ export const fetchAggregationData = async () => {
   }
 
   return queryClient.fetchQuery({
-    queryKey: ['aggregate', 'shiro'],
+    queryKey: ['aggregate', 'cyber'],
     queryFn: fetcher,
     staleTime: cacheTime,
     gcTime: cacheTime,

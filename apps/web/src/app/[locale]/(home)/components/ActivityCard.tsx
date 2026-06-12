@@ -66,7 +66,7 @@ export const ActivityCard = ({ activity }: { activity: ReactActivityType }) => {
                 )}
                 <span className="font-medium">{activity.author}</span>{' '}
                 <small>{t('in')}</small>{' '}
-                <Link className="shiro-link--underline" href={toLink}>
+                <Link className="cyber-link--underline" href={toLink}>
                   <b>
                     {activity.title ||
                       (activity.type === CollectionRefTypes.Recently

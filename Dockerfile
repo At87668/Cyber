@@ -46,7 +46,7 @@ ENV TMDB_API_KEY=${TMDB_API_KEY}
 ENV WEBHOOK_SECRET=${WEBHOOK_SECRET}
 ENV GH_TOKEN=${GH_TOKEN}
 
-RUN pnpm turbo run build --filter=@shiro/web
+RUN pnpm turbo run build --filter=@cyber/web
 
 FROM base AS runner
 WORKDIR /app
@@ -86,4 +86,4 @@ EXPOSE 2323
 
 ENV PORT=2323
 ENV NEXT_SHARP_PATH=/usr/local/lib/node_modules/sharp
-CMD ["sh", "-c", "echo 'Mix Space Web [Shiro] Image.' && node apps/web/server.js"]
+CMD ["sh", "-c", "echo 'Mix Space Web [Cyber] Image.' && node apps/web/server.js"]

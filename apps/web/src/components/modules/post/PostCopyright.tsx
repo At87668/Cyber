@@ -9,7 +9,6 @@ import { toast } from '~/lib/toast'
 import { useCurrentPostDataSelector } from '~/providers/post/CurrentPostDataProvider'
 import { useAggregationSelector } from '~/providers/root/aggregation-data-provider'
 
-
 export const PostCopyright: FC = () => {
   const t = useTranslations('post')
   const tCommon = useTranslations('common')
@@ -82,7 +81,7 @@ export const PostCopyright: FC = () => {
             type="tooltip"
             triggerElement={
               <a
-                className="shiro-link--underline"
+                className="cyber-link--underline"
                 href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
                 target="_blank"
                 rel="noreferrer"

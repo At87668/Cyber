@@ -2,7 +2,7 @@
 
 # constants
 owner='innei'
-repo='shiro'
+repo='cyber'
 tmpName=$(openssl rand -hex 5) # Create a random tmp name
 
 cd $HOME/mx/kami

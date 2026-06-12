@@ -10,7 +10,7 @@ import { Input, TextArea } from '../ui/input'
 import { useModalStack } from '../ui/modal'
 import { ShadowDOMContext } from '../ui/react-component-render/ShadowDOM'
 
-const prefix = 'shiro'
+const prefix = 'cyber'
 
 const globalComponentMap = {
   Button: StyledButton,

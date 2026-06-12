@@ -1,11 +1,11 @@
-# Shiro
+# Cyber
 
 > [!IMPORTANT]
-> **Shiro 已进入维护模式，将停留在当前版本，不再添加新功能，仅修复关键 Bug。**
+> **Cyber 已进入维护模式，将停留在当前版本，不再添加新功能，仅修复关键 Bug。**
 >
 > 如果你正在寻找一个全新的个人博客前端，请关注 **[余白 / Yohaku](https://github.com/Innei/Yohaku)** — 一个独立的新项目，拥有全新的设计语言与视觉体系。完整代码需 [赞助](https://github.com/sponsors/Innei) 获取访问权限。
 >
-> **Shiro 要求 Mix Space Core 版本 == 10.x**，不兼容更高版本。
+> **Cyber 要求 Mix Space Core 版本 == 10.x**，不兼容更高版本。
 
 一个极简主义的个人网站主题，如纸的纯净，似雪的清新。
 
@@ -13,13 +13,13 @@
 
 ## :sparkles: 示例站点
 
-以下是一些使用 Shiro 主题的精美站点：
+以下是一些使用 Cyber 主题的精美站点：
 
 - [静かな森](https://innei.in)
 - [可愛い松](https://blog.wibus.ren/)
 
 
-欢迎体验 Shiro 带来的极简之美！
+欢迎体验 Cyber 带来的极简之美！
 
 ## :rocket: 核心特性
 
@@ -49,21 +49,21 @@
 
 ## 📖 部署指南
 
-详细的部署教程请参考：https://mx-space.js.org/docs/themes/shiro/deploy
+详细的部署教程请参考：https://mx-space.js.org/docs/themes/cyber/deploy
 
 感谢 @wibus-wee、@wuhang2003 等社区贡献者编写的详细文档。
 
 ## :camera: 界面预览
 
-<img width="1471" alt="Live Demo" src="https://github.com/Innei/Shiro/assets/41265413/bf8af4ec-0f0c-441a-8c06-4b44e1649597">
+<img width="1471" alt="Live Demo" src="https://github.com/At87668/Cyber/assets/41265413/bf8af4ec-0f0c-441a-8c06-4b44e1649597">
 
 <details>
 <summary>
 点击查看更多完整页面截图
 </summary>
 
-![页面截图 1](https://github.com/Innei/Shiro/assets/41265413/1b85c9be-0cd3-46b5-a089-a9ab97fdfecb)
-![页面截图 2](https://github.com/Innei/Shiro/assets/41265413/d808d288-c022-42f2-8d74-ad057a588771)
+![页面截图 1](https://github.com/At87668/Cyber/assets/41265413/1b85c9be-0cd3-46b5-a089-a9ab97fdfecb)
+![页面截图 2](https://github.com/At87668/Cyber/assets/41265413/d808d288-c022-42f2-8d74-ad057a588771)
 
 </details>
 
@@ -71,13 +71,13 @@
 
 在 M2 MacBook Air 环境下对重负载页面的性能测试结果：
 
-![性能测试结果](https://github.com/Innei/Shiro/assets/41265413/f76152af-4a52-46a2-9b83-20567800ba75)
+![性能测试结果](https://github.com/At87668/Cyber/assets/41265413/f76152af-4a52-46a2-9b83-20567800ba75)
 
 ## :whale: 快速开始
 
 ### :package: 预构建版本
 
-从 [Releases](https://github.com/Innei/Shiro/releases) 页面下载最新的 `release.zip` 压缩包并解压：
+从 [Releases](https://github.com/At87668/Cyber/releases) 页面下载最新的 `release.zip` 压缩包并解压：
 
 ```bash
 cd standalone
@@ -89,9 +89,9 @@ node server.js
 ### :docker: Docker Compose（推荐）
 
 ```bash
-mkdir shiro && cd shiro
-wget https://raw.githubusercontent.com/Innei/Shiro/main/docker-compose.yml
-wget https://raw.githubusercontent.com/Innei/Shiro/main/.env.template .env
+mkdir cyber && cd cyber
+wget https://raw.githubusercontent.com/At87668/Cyber/main/docker-compose.yml
+wget https://raw.githubusercontent.com/At87668/Cyber/main/.env.template .env
 
 vim .env # 配置环境变量
 mkdir public # 放置自定义 Favicon
@@ -103,7 +103,7 @@ docker compose pull
 
 ## :memo: Markdown 扩展
 
-了解更多 Markdown 扩展语法，请访问：https://shiro.innei.in/#/markdown
+了解更多 Markdown 扩展语法，请访问：https://cyber.innei.in/#/markdown
 
 ## :star: 余白 / Yohaku
 
@@ -111,9 +111,9 @@ docker compose pull
 
 [![Sponsor](https://img.shields.io/badge/Sponsor-Innei-ea4aaa?logo=github-sponsors&logoColor=white)](https://github.com/sponsors/Innei)
 
-## :star: 白い (Shiroi) - 赞助版
+## :star: 白い (Cyberi) - 赞助版
 
-[白い](https://github.com/innei-dev/Shiroi) 是 Shiro 的付费赞助版本，包含更多高级功能：
+[白い](https://github.com/innei-dev/Cyberi) 是 Cyber 的付费赞助版本，包含更多高级功能：
 
 ### :robot: AI 智能功能
 

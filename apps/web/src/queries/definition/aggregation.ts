@@ -10,7 +10,7 @@ export const aggregation = {
     defineQuery({
       queryKey: ['aggregation'],
       queryFn: async () =>
-        apiClient.aggregate.getAggregateData('shiro').then(
+        apiClient.aggregate.getAggregateData('cyber').then(
           (res) =>
             res.$serialized as AggregateRoot & {
               theme: AppThemeConfig

@@ -104,7 +104,7 @@ export const GET = async (
         }
 
     const aggregation =
-      await apiClient.aggregate.getAggregateData<AppThemeConfig>('shiro')
+      await apiClient.aggregate.getAggregateData<AppThemeConfig>('cyber')
 
     try {
       data = JSON.parse(decodeURIComponent(dataString))

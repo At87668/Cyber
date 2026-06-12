@@ -25,28 +25,28 @@ const PROJECTS: CyberProject[] = [
     body: 'A modern personal blog built with Next.js, Tailwind, and Motion. Crafted for the cyber era.',
     variant: 'web',
     tag: 'TypeScript',
-    url: 'https://github.com/Innei/Shiro',
+    url: 'https://github.com/At87668/Cyber',
   },
   {
     title: 'CyberConsole',
     body: 'A drop-in developer console that mirrors the cyberpunk theme. Replaces noisy logs with structured output.',
     variant: 'console',
     tag: 'TypeScript',
-    url: 'https://github.com/Innei/Shiro',
+    url: 'https://github.com/At87668/Cyber',
   },
   {
     title: 'NeonLinks',
     body: 'A friend-link portal with neon hover effects, friend graph visualizations, and rich RSS aggregation.',
     variant: 'light',
     tag: 'TypeScript',
-    url: 'https://github.com/Innei/Shiro',
+    url: 'https://github.com/At87668/Cyber',
   },
   {
     title: 'Galaxy',
     body: 'A 3D project carousel inspired by retro sci-fi dashboards. Drag to rotate, hover to focus.',
     variant: 'miner',
     tag: 'TypeScript',
-    url: 'https://github.com/Innei/Shiro',
+    url: 'https://github.com/At87668/Cyber',
   },
 ]
 

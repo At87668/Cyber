@@ -4,7 +4,7 @@ set -e
 # 使用环境变量 GH_TOKEN
 curl_response=$(curl -L -H "Accept: application/vnd.github+json" \
   -H "Authorization: Bearer $GH_TOKEN" \
-  "https://api.github.com/repos/innei/shiro/actions/artifacts?per_page=5&page=1")
+  "https://api.github.com/repos/innei/cyber/actions/artifacts?per_page=5&page=1")
 download_url=$(echo $curl_response | jq -r '.artifacts[] | select(.name == "artifact") | .archive_download_url')
 
 if [ -z "$download_url" ] || [ "$download_url" == "null" ]; then
@@ -19,6 +19,6 @@ fi
 # 使用环境变量 GH_TOKEN
 curl -L -H "Authorization: Bearer $GH_TOKEN" "$download_url" -o build.zip
 
-[ ! -d "shiro" ] && mkdir shiro
+[ ! -d "cyber" ] && mkdir cyber
 unzip build.zip
-unzip -o release.zip 'standalone/*' -d shiro
+unzip -o release.zip 'standalone/*' -d cyber

@@ -7,7 +7,7 @@ import type { BLUser } from './types/user'
 
 const headers = {
   referer: `https://live.bilibili.com/`,
-  'User-Agent': `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 Shiro`,
+  'User-Agent': `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 Cyber`,
 }
 
 const requestHeader = new Headers()

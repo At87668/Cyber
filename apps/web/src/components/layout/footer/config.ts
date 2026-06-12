@@ -12,7 +12,7 @@ export const defaultLinkSections: LinkSection[] = [
       },
       {
         name: '关于此项目',
-        href: 'https://github.com/innei/Shiro',
+        href: 'https://github.com/innei/Cyber',
         external: true,
       },
     ],

@@ -585,7 +585,7 @@ html.cyber-dark ::selection {
 }
 
 /* make the activity timeline's accent color cyan */
-html.cyber-dark .shiro-timeline::before {
+html.cyber-dark .cyber-timeline::before {
   background: linear-gradient(
     to bottom,
     transparent,
@@ -594,7 +594,7 @@ html.cyber-dark .shiro-timeline::before {
     transparent
   ) !important;
 }
-html.cyber-dark .shiro-timeline > li::before {
+html.cyber-dark .cyber-timeline > li::before {
   background: var(--cyber-cyan) !important;
   box-shadow: 0 0 8px var(--cyber-cyan);
 }

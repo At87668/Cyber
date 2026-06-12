@@ -195,7 +195,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       .join('; '),
   )
 
-  headers.append('user-agent', 'Shiro')
+  headers.append('user-agent', 'Cyber')
 
   const userAuth = await fetch(
     apiClient.proxy('owner')('check_logged').toString(true),
@@ -276,7 +276,7 @@ const SayHi = () => (
         'margin: 1em 0; padding: 5px 0; background: #efefef;',
       )
       console.info(
-        `%c Shiro ${window.version} %c https://github.com/Innei/Shiro`,
+        `%c Cyber ${window.version} %c https://github.com/At87668/Cyber`,
         'color: #fff; margin: 1em 0; padding: 5px 0; background: #39C5BB;',
         'margin: 1em 0; padding: 5px 0; background: #efefef;',
       )
