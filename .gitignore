@@ -54,3 +54,4 @@ _bench_compiled*
 # local
 reference/
 **/dist/
+**/core
