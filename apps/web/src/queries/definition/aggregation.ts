@@ -10,12 +10,9 @@ export const aggregation = {
     defineQuery({
       queryKey: ['aggregation'],
       queryFn: async () =>
-        apiClient.aggregate.getAggregateData('cyber').then(
-          (res) =>
-            res.$serialized as AggregateRoot & {
-              theme: AppThemeConfig
-            },
-        ),
+        apiClient.aggregate.getAggregateData('cyber') as AggregateRoot & {
+          theme: AppThemeConfig
+        },
       gcTime: 1000 * 60 * 10,
       staleTime: isServer ? 1000 * 60 * 10 : undefined,
     }),
