@@ -22,7 +22,7 @@
     ]
   },
   "dependencies": {
-    "tailwindcss": "4.1.18"
+    "tailwindcss": "4.3.0"
   },
   "devDependencies": {
     "@types/node": "25.0.10",
