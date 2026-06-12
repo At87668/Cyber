@@ -55,3 +55,4 @@ _bench_compiled*
 reference/
 **/dist/
 core/
+*.log
