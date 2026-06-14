@@ -21,7 +21,7 @@
     "prod:pm2": "cross-env NODE_ENV=production pm2 restart ecosystem.config.cjs",
     "prod:reload": "pm2 reload ecosystem.config.cjs",
     "prod:stop": "pm2 stop ecosystem.config.cjs",
-    "start": "npm run dev"
+    "start": "next start -p 2323"
   },
   "dependencies": {
     "@base-ui/react": "1.3.0",
