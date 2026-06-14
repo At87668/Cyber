@@ -62,7 +62,8 @@
       "@types/react-dom": "19.2.3"
     },
     "patchedDependencies": {
-      "@innei/markdown-to-jsx-yet": "patches/@innei__markdown-to-jsx-yet.patch"
+      "@innei/markdown-to-jsx-yet": "patches/@innei__markdown-to-jsx-yet.patch",
+      "@haklex/rich-editor": "patches/@haklex__rich-editor.patch"
     }
   }
 }
