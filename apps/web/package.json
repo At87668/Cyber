@@ -1,6 +1,6 @@
 {
   "name": "@cyber/web",
-  "version": "6.6.7",
+  "version": "7.0.0",
   "private": true,
   "license": "AGPL-3.0",
   "type": "module",
