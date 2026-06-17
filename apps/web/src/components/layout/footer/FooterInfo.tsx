@@ -111,32 +111,6 @@ const PoweredBy = async ({ className }: { className?: string }) => {
         }
       >
         <div className="space-y-2">
-          <p>
-            {t.rich('cyberi_closed_source', {
-              link: (chunks) => (
-                <StyledLink
-                  className="underline"
-                  href="https://github.com/innei/Cyber"
-                  target="_blank"
-                >
-                  {chunks}
-                </StyledLink>
-              ),
-            })}
-          </p>
-          <p>
-            {t.rich('cyberi_get_via', {
-              link: (chunks) => (
-                <MarkdownLink
-                  popper={false}
-                  noIcon
-                  href="https://github.com/sponsors/Innei"
-                >
-                  {chunks}
-                </MarkdownLink>
-              ),
-            })}
-          </p>
           {process.env.COMMIT_HASH && process.env.COMMIT_URL && (
             <p>
               <MarkdownLink popper={false} noIcon href={process.env.COMMIT_URL}>
