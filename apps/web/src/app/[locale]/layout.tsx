@@ -74,27 +74,27 @@ export const generateMetadata = async ({
   return {
     metadataBase: webUrl ? new URL(webUrl) : undefined,
     title: {
-      template: `%s - ${seo.title}`,
-      default: `${seo.title} - ${seo.description}`,
+      template: `%s - ${seo?.title}`,
+      default: `${seo?.title} - ${seo?.description}`,
     },
-    description: seo.description,
-    keywords: seo.keywords?.join(',') || '',
+    description: seo?.description,
+    keywords: seo?.keywords?.join(',') || '',
     icons: [
       {
-        url: config.site.favicon,
+        url: config?.site?.favicon,
         type: 'image/svg+xml',
         sizes: 'any',
       },
       {
         rel: 'icon',
         type: 'image/svg+xml',
-        url: config.site.favicon,
+        url: config?.site?.favicon,
         media: '(prefers-color-scheme: light)',
       },
       {
         rel: 'icon',
         type: 'image/svg+xml',
-        url: config.site.faviconDark || config.site.favicon,
+        url: config?.site?.faviconDark || config?.site?.favicon,
         media: '(prefers-color-scheme: dark)',
       },
     ],
@@ -112,11 +112,11 @@ export const generateMetadata = async ({
     },
     openGraph: {
       title: {
-        default: seo.title,
-        template: `%s | ${seo.title}`,
+        default: seo?.title,
+        template: `%s | ${seo?.title}`,
       },
-      description: seo.description,
-      siteName: `${seo.title}`,
+      description: seo?.description,
+      siteName: `${seo?.title}`,
       locale: localeMap[locale] || 'zh_CN',
       type: 'website',
       url: webUrl || undefined,
@@ -124,16 +124,16 @@ export const generateMetadata = async ({
         ? {
             images: {
               url: `${webUrl}/home-og`,
-              username: user.name,
+              username: user?.name,
             },
           }
         : {}),
     },
     twitter: {
-      creator: `@${user.socialIds?.twitter || user.socialIds?.x || '__oQuery'}`,
+      creator: `@${user?.socialIds?.twitter || user?.socialIds?.x || '__oQuery'}`,
       card: 'summary_large_image',
-      title: seo.title,
-      description: seo.description,
+      title: seo?.title,
+      description: seo?.description,
     },
 
     alternates: {

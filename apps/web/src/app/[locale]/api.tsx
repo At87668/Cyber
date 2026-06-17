@@ -16,15 +16,14 @@ export const fetchAggregationData = async () => {
   await attachServerFetch()
   const queryClient = getQueryClient()
   const fetcher = async () => {
-    const data = (await $fetch<
-      AggregateRoot & {
-        theme: AppThemeConfig
-      }
-    >(apiClient.aggregate.proxy.toString(true), {
+    const rawResponse = await $fetch(apiClient.aggregate.proxy.toString(true), {
       params: {
         theme: 'cyber',
       },
-    }).then(simpleCamelcaseKeys)) as AggregateRoot & {
+    }).then(simpleCamelcaseKeys)
+
+    // Unwrap server response envelope { data: ..., meta?: ... }
+    const data = (rawResponse?.data ?? rawResponse) as AggregateRoot & {
       theme: AppThemeConfig
     }
 

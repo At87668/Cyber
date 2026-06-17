@@ -20,28 +20,28 @@ export default function Home() {
   const ldJson: WithContext<Blog> = {
     '@context': 'https://schema.org',
     '@type': 'Blog',
-    name: config?.seo.title,
-    url: config?.url.webUrl,
-    description: config?.seo.description,
+    name: config?.seo?.title,
+    url: config?.url?.webUrl,
+    description: config?.seo?.description,
     author: {
       '@type': 'Person',
-      name: config?.user.name,
-      url: config?.url.webUrl,
+      name: config?.user?.name,
+      url: config?.url?.webUrl,
     },
     publisher: {
       '@type': 'Person',
-      name: config?.user.name,
-      url: config?.url.webUrl,
+      name: config?.user?.name,
+      url: config?.url?.webUrl,
     },
     image: {
       '@type': 'ImageObject',
-      url: `${config?.url.webUrl}/home-og`,
+      url: `${config?.url?.webUrl}/home-og`,
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': config?.url.webUrl,
+      '@id': config?.url?.webUrl,
     },
-    keywords: config?.seo.keywords,
+    keywords: config?.seo?.keywords,
   }
   const { notes, posts } = useHomeQueryData()
   const listLdJson: WithContext<ItemList> = {
@@ -58,16 +58,16 @@ export default function Home() {
           '@type': 'BlogPosting',
           author: {
             '@type': 'Person',
-            name: config?.user.name,
-            url: config?.url.webUrl,
+            name: config?.user?.name,
+            url: config?.url?.webUrl,
           },
           headline: article.title,
           image: article.meta?.cover || [],
           name: article.title,
           url:
             'nid' in article
-              ? `${config?.url.webUrl}/notes/${article.nid}`
-              : `${config?.url.webUrl}/posts/${article.category.slug}/${article.slug}`,
+              ? `${config?.url?.webUrl}/notes/${article.nid}`
+              : `${config?.url?.webUrl}/posts/${article.category?.slug}/${article.slug}`,
           datePublished: article.created,
         },
       })),
