@@ -10,7 +10,9 @@ import { getAggregationData } from '~/providers/root/aggregation-data-provider'
 
 export function urlBuilder(path = '') {
   if (isDev) return new URL(path, 'http://localhost:2323')
-  return new URL(path, getAggregationData()?.url.webUrl)
+  const webUrl = getAggregationData()?.url?.webUrl
+  if (!webUrl) return new URL(path, 'http://localhost:2323')
+  return new URL(path, webUrl)
 }
 
 export function isPostModel(model: any): model is PostModel {

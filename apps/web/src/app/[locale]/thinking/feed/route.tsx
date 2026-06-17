@@ -23,13 +23,14 @@ export async function GET() {
   ])
 
   const { title, description } = agg.seo
+  const webUrl = agg.url?.webUrl || ''
 
   const now = new Date()
   const feed = new RSS({
     title: `思考 - ${title}`,
     description,
-    site_url: agg.url.webUrl,
-    feed_url: `${agg.url.webUrl}/thinking/feed`,
+    site_url: webUrl,
+    feed_url: `${webUrl}/thinking/feed`,
     language: 'zh-CN',
     generator: 'Cyber (https://github.com/At87668/Cyber)',
     pubDate: now.toUTCString(),
@@ -41,9 +42,9 @@ export async function GET() {
       description:
         `${t.content}\n\n${t.ref?.title ? `引用：${t.ref.title}` : ''}\n\n` +
         ` <p style='text-align: right'>
-      <a href='${`${agg.url.webUrl}/thinking/${t.id}`}'>看完了？说点什么呢</a>
+      <a href='${`${webUrl}/thinking/${t.id}`}'>看完了？说点什么呢</a>
       </p>`,
-      url: `${agg.url.webUrl}/thinking`,
+      url: `${webUrl}/thinking`,
       guid: t.id,
       date: t.created,
     })

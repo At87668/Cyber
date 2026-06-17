@@ -63,6 +63,8 @@ export const generateMetadata = async ({
     theme: { config },
   } = fetchedData
 
+  const webUrl = url?.webUrl || ''
+
   const localeMap: Record<string, string> = {
     zh: 'zh_CN',
     en: 'en_US',
@@ -70,7 +72,7 @@ export const generateMetadata = async ({
   }
 
   return {
-    metadataBase: new URL(url.webUrl),
+    metadataBase: webUrl ? new URL(webUrl) : undefined,
     title: {
       template: `%s - ${seo.title}`,
       default: `${seo.title} - ${seo.description}`,
@@ -117,11 +119,15 @@ export const generateMetadata = async ({
       siteName: `${seo.title}`,
       locale: localeMap[locale] || 'zh_CN',
       type: 'website',
-      url: url.webUrl,
-      images: {
-        url: `${url.webUrl}/home-og`,
-        username: user.name,
-      },
+      url: webUrl || undefined,
+      ...(webUrl
+        ? {
+            images: {
+              url: `${webUrl}/home-og`,
+              username: user.name,
+            },
+          }
+        : {}),
     },
     twitter: {
       creator: `@${user.socialIds?.twitter || user.socialIds?.x || '__oQuery'}`,
@@ -131,7 +137,7 @@ export const generateMetadata = async ({
     },
 
     alternates: {
-      canonical: url.webUrl,
+      canonical: webUrl || undefined,
       types: {
         'application/rss+xml': [{ url: 'feed', title: 'RSS 订阅' }],
       },

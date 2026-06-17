@@ -25,7 +25,7 @@ export const AggregationProvider: FC<
   useBeforeMounted(() => {
     if (!aggregationData) return
     jotaiStore.set(aggregationDataAtom, aggregationData)
-    setWebUrl(aggregationData.url.webUrl)
+    setWebUrl(aggregationData.url?.webUrl || '')
   })
   useBeforeMounted(() => {
     if (!appConfig) return
@@ -49,7 +49,7 @@ export const AggregationProvider: FC<
   useEffect(() => {
     if (!aggregationData) return
     jotaiStore.set(aggregationDataAtom, aggregationData)
-    setWebUrl(aggregationData.url.webUrl)
+    setWebUrl(aggregationData.url?.webUrl || '')
   }, [aggregationData])
 
   const callOnceRef = useRef(false)
