@@ -89,8 +89,19 @@ let nextConfig = {
   },
 
   async rewrites() {
+    const apiUrl = env.NEXT_PUBLIC_API_URL || ''
+    const apiRewrites = apiUrl.startsWith('http')
+      ? [
+          {
+            source: '/api/v3/:path*',
+            destination: `${apiUrl}/:path*`,
+          },
+        ]
+      : []
+
     return {
       beforeFiles: [
+        ...apiRewrites,
         { source: '/atom.xml', destination: '/feed' },
         { source: '/feed.xml', destination: '/feed' },
         { source: '/sitemap.xml', destination: '/sitemap' },
