@@ -76,7 +76,7 @@ function PageInner({
 }) {
   return (
     <>
-      <AckRead id={data?.id} type="note" />
+      {data?.id && <AckRead id={data.id} type="note" />}
 
       <NoteHeadCover image={data?.meta?.cover} />
 
