@@ -100,8 +100,8 @@ const remapPagination = (pg: any) => {
   if (!pg || typeof pg !== 'object') return pg
   const currentPage = pg.currentPage ?? pg.page
   const totalPage = pg.totalPage ?? pg.totalPages
-  const {total} = pg
-  const {size} = pg
+  const { total } = pg
+  const { size } = pg
   const out: Record<string, unknown> = {
     currentPage,
     totalPage,
@@ -141,4 +141,9 @@ export const createApiClient = (
   createClient(fetchAdapter)(API_URL, {
     controllers: allControllers,
     transformResponse: legacyTransformResponse,
+    // ofetch returns the parsed body directly (not wrapped in { data: ... }),
+    // so we need a safe getter that handles both v3 envelope responses
+    // ({ data, meta }) and edge cases where the response is undefined
+    // (e.g. 204 No Content or empty body).
+    getDataFromResponse: (res: any) => res?.data ?? res ?? null,
   })
