@@ -9,12 +9,30 @@ import { useViewport } from '~/atoms/hooks/viewport'
 import { useIsClient } from '~/hooks/common/use-is-client'
 import { useSingleAndDoubleClick } from '~/hooks/common/use-single-double-click'
 import { useRouter } from '~/i18n/navigation'
+import { clsxm } from '~/lib/helper'
 import { noopObj } from '~/lib/noop'
 import { Routes } from '~/lib/route-builder'
-import { useAppConfigSelector } from '~/providers/root/aggregation-data-provider'
+import {
+  useAggregationSelector,
+  useAppConfigSelector,
+} from '~/providers/root/aggregation-data-provider'
 
-import { SiteOwnerAvatar } from './SiteOwnerAvatar'
 import { useLiveQuery } from './useLiveQuery'
+
+const SiteNameText = ({ className }: { className?: string }) => {
+  const siteName = useAggregationSelector((data) => data.seo.title)
+
+  return (
+    <span
+      className={clsxm(
+        'line-clamp-1 text-lg font-semibold leading-none',
+        className,
+      )}
+    >
+      {siteName}
+    </span>
+  )
+}
 
 const TapableLogo = () => {
   const router = useRouter()
@@ -50,8 +68,8 @@ const TapableLogo = () => {
 
   return (
     <button onClick={fn}>
-      <SiteOwnerAvatar className="cursor-pointer" />
-      <span className="sr-only">Owner Avatar</span>
+      <SiteNameText className="cursor-pointer" />
+      <span className="sr-only">Site Name</span>
     </button>
   )
 }
