@@ -203,12 +203,7 @@ const PostPreview = () => {
       <CurrentPostDataAtomProvider overrideAtom={overrideAtom}>
         <CurrentPostDataProvider data={data} />
         <div className="relative flex min-h-[120px] grid-cols-[auto_200px] lg:grid">
-          <article
-            className={clsx(
-              'relative w-full min-w-0',
-               'prose',
-            )}
-          >
+          <article className={clsx('relative w-full min-w-0', 'prose')}>
             <header className="mb-8">
               <h1 className="text-balance text-center">{data.title}</h1>
 
@@ -266,7 +261,9 @@ const NotePreview = () => {
         <CurrentNoteDataProvider data={data} />
         <Paper>
           <NoteHeadCover image={rawData.meta?.cover} />
-          <IndentArticleContainer prose={data.data.contentFormat !== 'lexical'}>
+          <IndentArticleContainer
+            prose={data?.data?.contentFormat !== 'lexical'}
+          >
             <header>
               <NoteTitle />
               <span className="flex flex-wrap items-center text-sm text-neutral/60">
@@ -304,9 +301,7 @@ const PagePreview = () => {
       <CurrentPageDataAtomProvider overrideAtom={overrideAtom}>
         <CurrentPageDataProvider data={data} />
         <div className="relative w-full min-w-0">
-          <article
-            className={'prose'}
-          >
+          <article className={'prose'}>
             <header className="mb-8">
               <PageTitle />
 

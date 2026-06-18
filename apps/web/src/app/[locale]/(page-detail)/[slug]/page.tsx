@@ -27,10 +27,10 @@ export default async function PageDetail({
       <FocusReadingEffect />
       <MarkdownImageRecordProviderInternal>
         <MarkdownSelection>
-          {data.meta?.style === 'equipment' ? (
+          {data?.meta?.style === 'equipment' ? (
             <EquipmentPage />
           ) : (
-            <PageContent contentFormat={data.contentFormat} />
+            <PageContent contentFormat={data?.contentFormat} />
           )}
         </MarkdownSelection>
       </MarkdownImageRecordProviderInternal>

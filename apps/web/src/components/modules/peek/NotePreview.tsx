@@ -42,15 +42,15 @@ export const NotePreview: FC<NotePreviewProps> = (props) => {
   if (isLoading) return <Loading className="w-full" useDefaultLoadingText />
   if (!data) return null
   const noteData = data as NoteWrappedWithLikedAndTranslationPayload
-  const note = noteData.data
+  const note = noteData?.data
   return (
     <CurrentNoteDataAtomProvider overrideAtom={overrideAtom}>
       <CurrentNoteDataProvider data={noteData} />
-      {!!note.id && <AckRead id={note.id} type="note" />}
+      {!!note?.id && <AckRead id={note.id} type="note" />}
       <BottomToUpSmoothTransitionView>
         <Paper>
-          <NoteHeadCover image={note.meta?.cover} />
-          <IndentArticleContainer prose={note.contentFormat !== 'lexical'}>
+          <NoteHeadCover image={note?.meta?.cover} />
+          <IndentArticleContainer prose={note?.contentFormat !== 'lexical'}>
             <header>
               <NoteTitle />
               <span className="flex flex-wrap items-center text-sm text-neutral/60">

@@ -71,14 +71,14 @@ function PageInner({
   data,
   privateLoginOnlyMessage,
 }: {
-  data: NoteWithTranslation
+  data?: NoteWithTranslation
   privateLoginOnlyMessage: string
 }) {
   return (
     <>
-      <AckRead id={data.id} type="note" />
+      <AckRead id={data?.id} type="note" />
 
-      <NoteHeadCover image={data.meta?.cover} />
+      <NoteHeadCover image={data?.meta?.cover} />
 
       <div>
         <NoteTitle />
@@ -89,7 +89,7 @@ function PageInner({
         </span>
 
         <NoteRootBanner />
-        {!data.isPublished && (
+        {!data?.isPublished && (
           <NoteBanner type="warning" message={privateLoginOnlyMessage} />
         )}
       </div>
@@ -101,12 +101,12 @@ function PageInner({
             <BanCopyWrapper>
               <MarkdownSelection>
                 <IndentArticleContainer
-                  prose={data.contentFormat !== 'lexical'}
+                  prose={data?.contentFormat !== 'lexical'}
                 >
                   <header className="sr-only">
                     <NoteTitle />
                   </header>
-                  <NoteContent contentFormat={data.contentFormat} />
+                  <NoteContent contentFormat={data?.contentFormat} />
                 </IndentArticleContainer>
               </MarkdownSelection>
             </BanCopyWrapper>
@@ -227,8 +227,8 @@ export default definePrerenderPage<NoteDetailPageParams>()<NoteDataResult>({
 
     return (
       <TocHeadingStrategyProvider
-        contentFormat={data.data.contentFormat}
-        hasContent={!!data.data.content}
+        contentFormat={data?.data?.contentFormat}
+        hasContent={!!data?.data?.content}
       >
         <CurrentNoteNidProvider nid={nid} />
         <CurrentNoteDataProvider data={data} />
@@ -237,14 +237,14 @@ export default definePrerenderPage<NoteDetailPageParams>()<NoteDataResult>({
         <Transition className="min-w-0" lcpOptimization>
           <Paper key={nid} as={NoteMainContainer}>
             <PageInner
-              data={data.data}
+              data={data?.data}
               privateLoginOnlyMessage={t('private_login_only')}
             />
           </Paper>
           <BottomToUpSoftScaleTransitionView delay={500}>
             <CommentAreaRootLazy
-              refId={data.data.id}
-              allowComment={data.data.allowComment}
+              refId={data?.data?.id}
+              allowComment={data?.data?.allowComment}
             />
           </BottomToUpSoftScaleTransitionView>
         </Transition>

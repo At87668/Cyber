@@ -74,8 +74,8 @@ export default definePrerenderPage<PageParams>()({
 
   Component: ({ data, children }) => (
     <TocHeadingStrategyProvider
-      contentFormat={data.contentFormat}
-      hasContent={!!data.content}
+      contentFormat={data?.contentFormat}
+      hasContent={!!data?.content}
     >
       <CurrentPageDataProvider data={data} />
       <div className="relative flex min-h-[120px] w-full">
@@ -83,7 +83,7 @@ export default definePrerenderPage<PageParams>()({
           <div className="relative w-full min-w-0">
             <WrappedElementProvider eoaDetect>
               <article
-                className={clsx(data.contentFormat !== 'lexical' && 'prose')}
+                className={clsx(data?.contentFormat !== 'lexical' && 'prose')}
               >
                 <header className="mb-8">
                   <BottomToUpSoftScaleTransitionView lcpOptimization delay={0}>
@@ -112,7 +112,10 @@ export default definePrerenderPage<PageParams>()({
         <LayoutRightSideProvider className="absolute inset-y-0 right-0 hidden translate-x-full lg:block" />
       </div>
       <BottomToUpSoftScaleTransitionView delay={1000}>
-        <CommentAreaRootLazy refId={data.id} allowComment={data.allowComment} />
+        <CommentAreaRootLazy
+          refId={data?.id}
+          allowComment={data?.allowComment}
+        />
       </BottomToUpSoftScaleTransitionView>
 
       <OnlyMobile>

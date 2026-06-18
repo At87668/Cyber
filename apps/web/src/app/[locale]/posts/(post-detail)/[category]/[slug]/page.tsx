@@ -143,13 +143,13 @@ const PostPage = ({ data }: { data: PostWithTranslation }) => {
           <PostMarkdownImageRecordProvider>
             <MarkdownSelection>
               <article
-                className={clsx(data.contentFormat !== 'lexical' && 'prose')}
+                className={clsx(data?.contentFormat !== 'lexical' && 'prose')}
               >
                 <div className="sr-only">
                   <PostTitle />
                 </div>
                 <FocusReadingEffect />
-                <PostContent contentFormat={data.contentFormat} />
+                <PostContent contentFormat={data?.contentFormat} />
               </article>
             </MarkdownSelection>
           </PostMarkdownImageRecordProvider>
@@ -194,8 +194,8 @@ export default definePrerenderPage<PageParams>()<PostDataResult>({
 
     return (
       <TocHeadingStrategyProvider
-        contentFormat={data.contentFormat}
-        hasContent={!!data.content}
+        contentFormat={data?.contentFormat}
+        hasContent={!!data?.content}
       >
         {currentPath !== fullPath && <SlugReplacer to={fullPath} />}
         <LdJsonWithAuthor baseLdJson={jsonLd} />
