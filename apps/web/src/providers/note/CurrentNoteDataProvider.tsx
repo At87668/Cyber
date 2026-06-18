@@ -28,7 +28,7 @@ export {
 }
 
 export const SyncNoteDataAfterLoggedIn = () => {
-  const nid = useModelDataSelector((data) => data?.data.nid)
+  const nid = useModelDataSelector((data) => data?.data?.nid)
   const password = useSearchParams().get('password')
   const locale = useLocale()
   const { data } = useQuery({

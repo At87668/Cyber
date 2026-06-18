@@ -125,7 +125,7 @@ export const NoteTopicDetail: FC<{ topic: TopicModel }> = (props) => {
 }
 
 export const ToTopicLink: FC = () => {
-  const topic = useCurrentNoteDataSelector((data) => data?.data.topic)
+  const topic = useCurrentNoteDataSelector((data) => data?.data?.topic)
   if (!topic) return null
   return (
     <Link

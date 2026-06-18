@@ -10,7 +10,7 @@ export const getCurrentPageId = () => {
   if (pathname.startsWith('/notes/')) {
     const noteId = getCurrentNoteData()
 
-    return noteId?.data.id
+    return noteId?.data?.id
   }
 
   if (pathname.startsWith('/posts/')) {

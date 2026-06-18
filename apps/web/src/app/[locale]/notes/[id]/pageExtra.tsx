@@ -29,7 +29,7 @@ export const MarkdownSelection: Component = (props) => {
   const id = useCurrentNoteDataSelector((data) => data?.data?.id)!
   const title = useCurrentNoteDataSelector((data) => data?.data?.title)!
   const canComment = useCurrentNoteDataSelector(
-    (data) => data?.data.allowComment,
+    (data) => data?.data?.allowComment,
   )!
   return (
     <WithArticleSelectionAction
@@ -43,8 +43,8 @@ export const MarkdownSelection: Component = (props) => {
 }
 
 export const NoteTitle = () => {
-  const title = useCurrentNoteDataSelector((data) => data?.data.title)
-  const id = useCurrentNoteDataSelector((data) => data?.data.id)
+  const title = useCurrentNoteDataSelector((data) => data?.data?.title)
+  const id = useCurrentNoteDataSelector((data) => data?.data?.id)
 
   if (!title) return null
   return (
@@ -63,7 +63,7 @@ export const NoteTitle = () => {
 }
 
 export const NoteDateMeta = () => {
-  const created = useCurrentNoteDataSelector((data) => data?.data.created)
+  const created = useCurrentNoteDataSelector((data) => data?.data?.created)
   const format = useFormatter()
 
   if (!created) return null
@@ -83,8 +83,8 @@ export const NoteDateMeta = () => {
 }
 export const NoteHeaderDate = withClientOnly(() => {
   const date = useCurrentNoteDataSelector((data) => ({
-    created: data?.data.created,
-    modified: data?.data.modified,
+    created: data?.data?.created,
+    modified: data?.data?.modified,
   }))
   const format = useFormatter()
   const t = useTranslations('common')
@@ -119,7 +119,7 @@ export const NoteHeaderDate = withClientOnly(() => {
 
 export const NoteMarkdownImageRecordProvider = (props: PropsWithChildren) => {
   const images = useCurrentNoteDataSelector(
-    (data) => data?.data.images || (noopArr as Image[]),
+    (data) => data?.data?.images || (noopArr as Image[]),
   )!
 
   return (

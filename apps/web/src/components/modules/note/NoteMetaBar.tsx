@@ -28,7 +28,7 @@ export const NoteMetaBar = () => (
 )
 
 export const NoteMetaWeather = () => {
-  const weather = useCurrentNoteDataSelector((data) => data?.data.weather)
+  const weather = useCurrentNoteDataSelector((data) => data?.data?.weather)
   const t = useTranslations('common')
   if (!weather) return null
   return (
@@ -43,7 +43,7 @@ export const NoteMetaWeather = () => {
 }
 
 export const NoteMetaMood = () => {
-  const mood = useCurrentNoteDataSelector((data) => data?.data.mood)
+  const mood = useCurrentNoteDataSelector((data) => data?.data?.mood)
   const t = useTranslations('common')
 
   if (!mood) return null

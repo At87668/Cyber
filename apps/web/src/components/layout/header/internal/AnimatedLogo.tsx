@@ -17,6 +17,7 @@ import {
   useAppConfigSelector,
 } from '~/providers/root/aggregation-data-provider'
 
+import { SiteOwnerAvatar } from './SiteOwnerAvatar'
 import { useLiveQuery } from './useLiveQuery'
 
 const SiteNameText = ({ className }: { className?: string }) => {
@@ -34,7 +35,7 @@ const SiteNameText = ({ className }: { className?: string }) => {
   )
 }
 
-const TapableLogo = () => {
+const TapableLogo = ({ showAvatar = true }: { showAvatar?: boolean }) => {
   const router = useRouter()
 
   const { data: isLiving } = useLiveQuery()
@@ -68,8 +69,14 @@ const TapableLogo = () => {
 
   return (
     <button onClick={fn}>
-      <SiteNameText className="cursor-pointer" />
-      <span className="sr-only">Site Name</span>
+      {showAvatar ? (
+        <SiteOwnerAvatar className="cursor-pointer" />
+      ) : (
+        <SiteNameText className="cursor-pointer" />
+      )}
+      <span className="sr-only">
+        {showAvatar ? 'Owner Avatar' : 'Site Name'}
+      </span>
     </button>
   )
 }
@@ -89,7 +96,7 @@ export const AnimatedLogo = () => {
       exit={{ opacity: 0 }}
       className="flex items-center will-change-[unset]!"
     >
-      <TapableLogo />
+      <TapableLogo showAvatar={false} />
     </m.div>
   )
 }

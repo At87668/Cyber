@@ -16,7 +16,7 @@ import { NoteTopicDetail, ToTopicLink } from './NoteTopicDetail'
 
 export const NoteTopicInfo = memo(() => {
   const t = useTranslations('note')
-  const topic = useCurrentNoteDataSelector((data) => data?.data.topic)
+  const topic = useCurrentNoteDataSelector((data) => data?.data?.topic)
 
   if (!topic) return null
 
@@ -47,7 +47,7 @@ const NoteTopicRank: FC<{
 }> = ({ topicId }) => {
   const t = useTranslations('note')
   const locale = useLocale()
-  const noteId = useCurrentNoteDataSelector((data) => data?.data.id)
+  const noteId = useCurrentNoteDataSelector((data) => data?.data?.id)
   const { data: topicNotes } = useQuery({
     queryKey: [`topic-${topicId}`, locale],
     refetchOnMount: true,

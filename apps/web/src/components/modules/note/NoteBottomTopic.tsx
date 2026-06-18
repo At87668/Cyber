@@ -23,7 +23,7 @@ const textToBigCharOrWord = (name: string | undefined) => {
 }
 
 export const NoteBottomTopic: FC = () => {
-  const topic = useCurrentNoteDataSelector((state) => state?.data.topic)
+  const topic = useCurrentNoteDataSelector((state) => state?.data?.topic)
   const isMobile = useIsMobile()
   if (!topic) return null
   const { icon, name, introduce } = topic
