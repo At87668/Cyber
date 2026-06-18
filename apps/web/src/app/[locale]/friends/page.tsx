@@ -76,7 +76,7 @@ export default function Page() {
 
   if (isLoading) return <FullPageLoading />
   if (!data) return null
-  const { banned, collections, friends, outdated } = data
+  const { banned, collections, friends, outdated } = data || {}
   return (
     <div>
       <header className="prose prose-p:my-2">
@@ -216,13 +216,13 @@ const BannedSection: FC<FriendSectionProps> = ({ data }) => (
 
 const ApplyLinkInfo: FC = () => {
   const t = useTranslations('friends')
-  const {
-    seo,
-    user: { avatar, name },
-  } = useAggregationSelector((a) => ({
-    seo: a.seo!,
-    user: a.user!,
-  }))!
+  const aggregation = useAggregationSelector((a) => ({
+    seo: a.seo,
+    user: a.user,
+  }))
+  const seo = aggregation?.seo
+  const avatar = aggregation?.user?.avatar
+  const name = aggregation?.user?.name
 
   const { data: canApply } = useQuery({
     queryKey: ['can-apply'],
@@ -251,11 +251,11 @@ const ApplyLinkInfo: FC = () => {
           {[
             '',
             `${t('info_title')}: [${
-              seo.title
+              seo?.title ?? ''
             }](${`${location.protocol}//${location.host}`})`,
-            `${t('info_description')}: ${seo.description}`,
-            `${t('info_avatar')}: [${t('info_avatar_download')}](${avatar})`,
-            `${t('info_name')}: ${name}`,
+            `${t('info_description')}: ${seo?.description ?? ''}`,
+            `${t('info_avatar')}: [${t('info_avatar_download')}](${avatar ?? ''})`,
+            `${t('info_name')}: ${name ?? ''}`,
           ].join('\n\n')}
         </Markdown>
       </div>

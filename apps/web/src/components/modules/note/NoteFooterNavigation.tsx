@@ -8,15 +8,14 @@ import { springScrollToTop } from '~/lib/scroller'
 import { useCurrentNoteDataSelector } from '~/providers/note/CurrentNoteDataProvider'
 
 export const NoteFooterNavigation = () => {
-  const data = useCurrentNoteDataSelector((data) =>
-    !data
-      ? null
-      : {
-          nextNid: data.next?.nid,
-          prevNid: data.prev?.nid,
-          currentObjectId: data.data.id,
-        },
-  )
+  const data = useCurrentNoteDataSelector((data) => {
+    if (!data) return null
+    return {
+      nextNid: data.next?.nid,
+      prevNid: data.prev?.nid,
+      currentObjectId: data.data?.id,
+    }
+  })
 
   const router = useRouter()
 

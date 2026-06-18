@@ -63,7 +63,7 @@ export async function AccentColorStyleInjector({
 
 // export const AccentColorProvider = ({ children }: PropsWithChildren) => {
 //   const { light, dark } =
-//     useAppConfigSelector((config) => config.color) || (noopObj as AccentColor)
+//     useAppConfigSelector((config) => config?.color) || (noopObj as AccentColor)
 
 //   const lightColors = light ?? accentColorLight
 //   const darkColors = dark ?? accentColorDark

@@ -137,7 +137,7 @@ const DonateButtonInternal: Component<HTMLMotionProps<'button'>> = ({
   ...props
 }) => {
   const t = useTranslations('common')
-  const donate = useAppConfigSelector((config) => config.module.donate)
+  const donate = useAppConfigSelector((config) => config.module?.donate)
   if (!donate) return null
   return (
     <MotionButtonBase

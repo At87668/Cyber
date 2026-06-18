@@ -30,20 +30,24 @@ const DEFAULT_TERMINAL_LINE =
 
 export const Hero = () => {
   const tCommon = useTranslations('common')
-  const { title, description } = useAppConfigSelector((config) => ({
-    ...config.hero,
-  }))!
-  const siteOwner = useAggregationSelector((agg) => agg.user)
+  const heroConfig = useAppConfigSelector((config) => config?.hero)
+  const siteOwner = useAggregationSelector((agg) => agg?.user)
   const { avatar, socialIds, name } = siteOwner || {}
 
+  const title = heroConfig?.title
+  const description = heroConfig?.description
+
   const titleAnimateD =
-    title.template.reduce((acc, cur) => acc + (cur.text?.length || 0), 0) * 50
+    (title?.template ?? []).reduce(
+      (acc, cur) => acc + (cur.text?.length || 0),
+      0,
+    ) * 50
 
   // The user-configured title is rendered as a glitching headline.
   // Fallback to the site owner name if no template was provided.
   const glitchText =
-    title.template
-      .map((t) => t.text ?? '')
+    title?.template
+      ?.map((t) => t.text ?? '')
       .join(' ')
       .trim() ||
     name ||
@@ -121,16 +125,18 @@ export const Hero = () => {
                 '0 0 0 1px var(--cyber-cyan), 0 0 25px rgba(0,243,255,0.45), inset 0 0 25px rgba(188,19,254,0.25)',
             }}
           />
-          <Image
-            height={300}
-            width={300}
-            src={avatar!}
-            alt={tCommon('aria_site_owner_avatar')}
-            className={clsxm(
-              'aspect-square rounded-full border border-slate-200 dark:border-neutral-800',
-              'w-full',
-            )}
-          />
+          {avatar && (
+            <Image
+              height={300}
+              width={300}
+              src={avatar}
+              alt={tCommon('aria_site_owner_avatar')}
+              className={clsxm(
+                'aspect-square rounded-full border border-slate-200 dark:border-neutral-800',
+                'w-full',
+              )}
+            />
+          )}
         </div>
 
         <m.div
@@ -159,9 +165,8 @@ export const Hero = () => {
 
 const FootHitokoto = () => {
   const t = useTranslations('home')
-  const { custom, random } = useAppConfigSelector(
-    (config) => config.hero.hitokoto || {},
-  )!
+  const hitokoto = useAppConfigSelector((config) => config.hero?.hitokoto)
+  const { custom, random } = hitokoto || {}
 
   if (random) return <RemoteHitokoto />
   return (

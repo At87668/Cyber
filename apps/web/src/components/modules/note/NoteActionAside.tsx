@@ -62,11 +62,12 @@ export const NoteActionAside: Component = ({ className }) => (
 const NoteAsideCommentButton = () => {
   const { title, id, allowComment } =
     useCurrentNoteDataSelector((_data) => {
-      const { data } = _data || {}
+      const data = _data?.data
+      if (!data) return null
       return {
-        title: data?.title,
-        id: data?.id,
-        allowComment: data?.allowComment,
+        title: data.title,
+        id: data.id,
+        allowComment: data.allowComment,
       }
     }) || {}
 

@@ -119,8 +119,8 @@ export const SubscribeModal: FC<SubscribeModalProps> = ({
     dispatch({ type: 'reset' })
     onConfirm()
   }
-  const title = useAggregationSelector((data) => data.seo.title)
-  const tg = useAppConfigSelector((data) => data.module.subscription.tg)
+  const title = useAggregationSelector((data) => data.seo?.title)
+  const tg = useAppConfigSelector((data) => data.module?.subscription?.tg)
 
   return (
     <form onSubmit={handleSubList} className="flex flex-col gap-5">

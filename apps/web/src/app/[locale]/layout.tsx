@@ -221,21 +221,25 @@ export default async function LocaleLayout({ children, params }: Props) {
             <Global />
             <SayHi />
             <HydrationEndDetector />
-            {themeConfig.config?.color && (
+            {themeConfig?.config?.color && (
               <AccentColorStyleInjector color={themeConfig.config.color} />
             )}
-            <link
-              rel="shortcut icon"
-              href={themeConfig.config.site.faviconDark}
-              type="image/x-icon"
-              media="(prefers-color-scheme: dark)"
-            />
-            <link
-              rel="shortcut icon"
-              href={themeConfig.config.site.favicon}
-              type="image/x-icon"
-              media="(prefers-color-scheme: light)"
-            />
+            {themeConfig?.config?.site?.faviconDark && (
+              <link
+                rel="shortcut icon"
+                href={themeConfig.config.site.faviconDark}
+                type="image/x-icon"
+                media="(prefers-color-scheme: dark)"
+              />
+            )}
+            {themeConfig?.config?.site?.favicon && (
+              <link
+                rel="shortcut icon"
+                href={themeConfig.config.site.favicon}
+                type="image/x-icon"
+                media="(prefers-color-scheme: light)"
+              />
+            )}
             <ScriptInjectProvider />
           </head>
           <body

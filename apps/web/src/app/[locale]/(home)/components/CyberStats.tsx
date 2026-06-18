@@ -20,12 +20,17 @@ export const CyberStats = () => {
   const user = useAggregationSelector((s) => s.user)
   const url = useAggregationSelector((s) => s.url)
 
+  const host = (() => {
+    try {
+      return url?.webUrl ? new URL(url.webUrl).host : 'NEXUS'
+    } catch {
+      return 'NEXUS'
+    }
+  })()
+
   const items = [
     { label: 'STATUS', value: 'ONLINE' },
-    {
-      label: 'UPLINK',
-      value: url?.webUrl ? new URL(url.webUrl).host : 'NEXUS',
-    },
+    { label: 'UPLINK', value: host },
     { label: 'LIKES', value: String(count ?? 0) },
     { label: 'OPERATOR', value: user?.name?.toUpperCase() ?? 'N/A' },
   ]

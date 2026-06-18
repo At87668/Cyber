@@ -69,9 +69,8 @@ export async function GET() {
     ]
   }
 
-  const imageUrl = agg.theme?.config?.site?.favicon.startsWith('/')
-    ? `${url}${agg.theme?.config?.site?.favicon}`
-    : agg.theme?.config?.site?.favicon
+  const favicon = agg.theme?.config?.site?.favicon
+  const imageUrl = favicon?.startsWith('/') ? `${url}${favicon}` : favicon
 
   const feed = new RSS({
     title,

@@ -26,16 +26,17 @@ import {
 import { queries } from '~/queries/definition'
 
 export const MarkdownSelection: Component = (props) => {
-  const id = useCurrentNoteDataSelector((data) => data?.data?.id)!
-  const title = useCurrentNoteDataSelector((data) => data?.data?.title)!
+  const id = useCurrentNoteDataSelector((data) => data?.data?.id)
+  const title = useCurrentNoteDataSelector((data) => data?.data?.title)
   const canComment = useCurrentNoteDataSelector(
     (data) => data?.data?.allowComment,
-  )!
+  )
+  if (!id || !title) return null
   return (
     <WithArticleSelectionAction
       refId={id}
       title={title}
-      canComment={canComment}
+      canComment={!!canComment}
     >
       {props.children}
     </WithArticleSelectionAction>
@@ -149,8 +150,8 @@ export const NoteDataReValidate: FC<{ fetchedAt: string }> = withClientOnly(
     const locale = useLocale()
 
     const nid = useCurrentNoteDataSelector((note) => {
-      if (!note) return {}
-      return note.data.nid
+      if (!note) return null
+      return note.data?.nid
     })
     const onceRef = useRef(false)
     const queryClient = useQueryClient()

@@ -110,8 +110,10 @@ const FormWithUserInfo: Component<{ autoFocus?: boolean }> = ({
 }
 
 const LoggedForm: Component<{ autoFocus?: boolean }> = ({ autoFocus }) => {
-  const user = useAggregationSelector((v) => v.user)!
+  const user = useAggregationSelector((v) => v.user)
   const compact = useCommentCompact()
+
+  if (!user) return null
 
   if (compact) {
     return (
