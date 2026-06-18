@@ -98,6 +98,7 @@ export default function TimelinePage() {
   const { data, refetch } = useQuery<TimelineData>({
     queryKey: ['timeline', nextType, year],
     initialData,
+    enabled: !!nextType,
     queryFn: async ({ queryKey }) => {
       const [, nextType, year] = queryKey as [string, TimelineType, string]
       return await apiClient.aggregate
@@ -110,7 +111,7 @@ export default function TimelinePage() {
   })
 
   useEffect(() => {
-    refetch()
+    if (nextType) refetch()
   }, [nextType])
 
   useJumpTo()
