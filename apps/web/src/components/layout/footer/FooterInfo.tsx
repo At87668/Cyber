@@ -103,7 +103,7 @@ const PoweredBy = async ({ className }: { className?: string }) => {
         triggerElement={
           <StyledLink
             className="cursor-help"
-            href="https://github.com/innei/Cyber"
+            href="https://github.com/At87668/Cyber"
             target="_blank"
           >
             Cyber

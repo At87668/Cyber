@@ -3,7 +3,7 @@ version: '3'
 services:
   cyber:
     container_name: cyber
-    image: innei/cyber:latest
+    image: At87668/Cyber:latest
     volumes:
       - ./.env:/app/apps/web/.env
       - ./public:/app/apps/web/public
