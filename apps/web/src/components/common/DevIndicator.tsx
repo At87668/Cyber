@@ -1,12 +1,13 @@
 'use client'
 
 import { API_URL } from '~/constants/env'
+import { isDev } from '~/lib/env'
 
 import { FloatPopover } from '../ui/float-popover'
 
 export const DevIndicator = () => (
   <>
-    {(API_URL.includes('localhost') || API_URL.includes('127.0.0.1')) && (
+    {isDev && (
       <FloatPopover
         type="tooltip"
         triggerElement={

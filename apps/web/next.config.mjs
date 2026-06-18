@@ -89,7 +89,7 @@ let nextConfig = {
   },
 
   async rewrites() {
-    const apiUrl = env.NEXT_PUBLIC_API_URL || ''
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || ''
     const apiRewrites = apiUrl.startsWith('http')
       ? [
           {
