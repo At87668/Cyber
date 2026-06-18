@@ -106,7 +106,7 @@ const PoweredBy = async ({ className }: { className?: string }) => {
             href="https://github.com/innei/Cyber"
             target="_blank"
           >
-            白
+            Cyber
           </StyledLink>
         }
       >
