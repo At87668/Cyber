@@ -69,6 +69,14 @@ export const Hero = () => {
             />
           </m.div>
 
+          {/* System status pill */}
+          <div className="mt-8 text-center lg:text-left">
+            <div className="cyber-status">
+              <span className="cyber-status__dot" />
+              <span>SYSTEM STATUS: ONLINE // NEXUS INTEGRATED</span>
+            </div>
+          </div>
+
           <BottomToUpTransitionView
             delay={titleAnimateD + 500}
             transition={softBouncePreset}

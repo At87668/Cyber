@@ -243,7 +243,46 @@ html.cyber-dark.noise body::before {
 }
 
 /* -------------------------------------------------------------------
- * 6. Typewriter prefix
+ * 6. Status bar / terminal chips
+ * ------------------------------------------------------------------- */
+.cyber-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 20px;
+  margin-top: 30px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 999px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  font-family: var(--cyber-font-mono);
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+[data-theme='light'] .cyber-status {
+  border-color: rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.06);
+  color: #444;
+}
+
+.cyber-status__dot {
+  width: 10px;
+  height: 10px;
+  background: var(--cyber-green);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--cyber-green);
+  animation: cyber-blink 1s infinite;
+}
+
+@keyframes cyber-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* -------------------------------------------------------------------
+ * 7. Typewriter prefix
  * ------------------------------------------------------------------- */
 .cyber-terminal-line {
   margin-top: 30px;
@@ -253,11 +292,6 @@ html.cyber-dark.noise body::before {
 
 [data-theme='light'] .cyber-terminal-line {
   color: #00838f;
-}
-
-@keyframes cyber-blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
 }
 
 .cyber-terminal-caret {
