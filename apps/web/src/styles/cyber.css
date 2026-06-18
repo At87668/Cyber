@@ -291,13 +291,17 @@ html.cyber-dark.noise body::before {
 }
 
 [data-theme='light'] .cyber-terminal-line {
-  color: #0097a7;
+  color: #00838f;
 }
 
 .cyber-terminal-caret {
   display: inline-block;
   animation: cyber-blink 0.8s infinite;
   margin-left: 2px;
+}
+
+[data-theme='light'] .cyber-terminal-caret {
+  color: #00838f;
 }
 
 /* -------------------------------------------------------------------
@@ -636,6 +640,12 @@ html.cyber-dark.noise body::before {
   font-family: var(--cyber-font-mono);
 }
 
+[data-theme='light'] .cyber-footer {
+  border-top-color: #ddd;
+  background: #f5f5f5;
+  color: #555;
+}
+
 .cyber-footer__links a {
   display: inline-block;
   margin: 0 15px;
@@ -645,10 +655,19 @@ html.cyber-dark.noise body::before {
   transition: color 0.3s, text-shadow 0.3s, transform 0.3s;
 }
 
+[data-theme='light'] .cyber-footer__links a {
+  color: #555;
+}
+
 .cyber-footer__links a:hover {
   color: var(--cyber-cyan);
   text-shadow: 0 0 10px var(--cyber-cyan);
   transform: translateY(-3px);
+}
+
+[data-theme='light'] .cyber-footer__links a:hover {
+  color: #0097a7;
+  text-shadow: none;
 }
 
 .cyber-footer__copy {
@@ -656,6 +675,10 @@ html.cyber-dark.noise body::before {
   color: #444;
   font-size: 0.8rem;
   letter-spacing: 0.05em;
+}
+
+[data-theme='light'] .cyber-footer__copy {
+  color: #888;
 }
 
 /* -------------------------------------------------------------------
@@ -669,6 +692,11 @@ html.cyber-dark.noise body::before {
   font-family: var(--cyber-font-mono);
 }
 
+[data-theme='light'] .cyber-header {
+  background: rgba(255, 255, 255, 0.85) !important;
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
 .cyber-header a,
 .cyber-header span,
 .cyber-header h1,
@@ -677,9 +705,21 @@ html.cyber-dark.noise body::before {
   letter-spacing: 0.04em;
 }
 
+[data-theme='light'] .cyber-header a,
+[data-theme='light'] .cyber-header span,
+[data-theme='light'] .cyber-header h1,
+[data-theme='light'] .cyber-header h2 {
+  color: #1a1a1a !important;
+}
+
 .cyber-header a:hover {
   color: var(--cyber-cyan) !important;
   text-shadow: var(--cyber-glow-cyan);
+}
+
+[data-theme='light'] .cyber-header a:hover {
+  color: #0097a7 !important;
+  text-shadow: none;
 }
 
 /* -------------------------------------------------------------------
