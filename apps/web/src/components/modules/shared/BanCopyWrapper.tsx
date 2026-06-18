@@ -1,6 +1,11 @@
 'use client'
 
-import { DialogContent, DialogPortal, Root } from '@radix-ui/react-dialog'
+import {
+  DialogContent,
+  DialogPortal,
+  DialogTitle,
+  Root,
+} from '@radix-ui/react-dialog'
 import { AnimatePresence, m } from 'motion/react'
 import type { FC, PropsWithChildren } from 'react'
 import { createContext, use, useEffect, useRef, useState } from 'react'
@@ -62,6 +67,7 @@ export const BanCopyWrapper: FC<PropsWithChildren> = (props) => {
                     setShowCopyWarn(false)
                   }}
                 >
+                  <DialogTitle className="hidden">注意</DialogTitle>
                   <div className="pointer-events-none mt-0 text-3xl font-medium text-red-400 dark:text-orange-500">
                     注意：
                   </div>

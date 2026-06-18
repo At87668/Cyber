@@ -1,6 +1,11 @@
 'use client'
 
-import { DialogContent, DialogPortal, Root } from '@radix-ui/react-dialog'
+import {
+  DialogContent,
+  DialogPortal,
+  DialogTitle,
+  Root,
+} from '@radix-ui/react-dialog'
 import { atom, useAtomValue, useSetAtom } from 'jotai'
 import type { HTMLMotionProps } from 'motion/react'
 import { AnimatePresence, m } from 'motion/react'
@@ -46,6 +51,7 @@ export const AsideDonateButton = () => {
                 <>
                   <ModalOverlay />
                   <DialogContent className="center fixed inset-0 z-[999] flex flex-col">
+                    <DialogTitle className="hidden">Donate</DialogTitle>
                     <DonateContent />
 
                     <DonateButtonTop />
