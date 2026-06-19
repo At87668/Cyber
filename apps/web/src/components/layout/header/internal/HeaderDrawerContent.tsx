@@ -43,7 +43,13 @@ export const HeaderDrawerContent = () => {
             }}
             key={href}
           >
-            <LinkInternal className="block" href={href}>
+            <LinkInternal
+              className="relative block border border-accent/60 px-4"
+              style={{
+                clipPath: 'polygon(3% 0, 100% 0, 97% 100%, 0 100%)',
+              }}
+              href={href}
+            >
               <span className="flex items-center space-x-2 py-2 text-lg">
                 <i>{section.icon}</i>
                 <h2>{getTitle(section)}</h2>
@@ -54,7 +60,13 @@ export const HeaderDrawerContent = () => {
               <ul className="my-2 grid grid-cols-2 gap-2">
                 {section.subMenu.map((sub) => (
                   <li key={sub.path}>
-                    <LinkInternal className="inline-block p-2" href={sub.path}>
+                    <LinkInternal
+                      className="relative block border border-accent/60 px-4"
+                      style={{
+                        clipPath: 'polygon(3% 0, 100% 0, 97% 100%, 0 100%)',
+                      }}
+                      href={sub.path}
+                    >
                       {getTitle(sub)}
                     </LinkInternal>
                   </li>

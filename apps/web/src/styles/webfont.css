@@ -1,46 +1,46 @@
-@font-face {
-  font-family: 'OperatorMonoSSmLig Nerd Font';
-  src:
-    url('https://cdn.jsdelivr.net/gh/Innei/zshrc@0.1.0/webfont/OperatorMonoSSmLigNerdFontAAEOPSLMDI-Italic.woff2')
-      format('woff2'),
-    url('https://cdn.jsdelivr.net/gh/Innei/zshrc@0.1.0/webfont/OperatorMonoSSmLigNerdFontAAEOPSLMDI-Italic.woff')
-      format('woff');
-  font-weight: normal;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'OperatorMonoSSmLig Nerd Font';
-  src:
-    url('https://cdn.jsdelivr.net/gh/Innei/zshrc@0.1.0/webfont/OperatorMonoSSmLigNerdFontAAEOPSLMDI-Book.woff2')
-      format('woff2'),
-    url('https://cdn.jsdelivr.net/gh/Innei/zshrc@0.1.0/webfont/OperatorMonoSSmLigNerdFontAAEOPSLMDI-Book.woff')
-      format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Operator Mono';
-  src:
-    url('https://cdn.jsdelivr.net/gh/Innei/zshrc@0.1.0/webfont/OperatorMonoSSmLigNerdFontAAEOPSLMDI-Italic.woff2')
-      format('woff2'),
-    url('https://cdn.jsdelivr.net/gh/Innei/zshrc@0.1.0/webfont/OperatorMonoSSmLigNerdFontAAEOPSLMDI-Italic.woff')
-      format('woff');
-  font-weight: normal;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'Operator Mono';
-  src:
-    url('https://cdn.jsdelivr.net/gh/Innei/zshrc@0.1.0/webfont/OperatorMonoSSmLigNerdFontAAEOPSLMDI-Book.woff2')
-      format('woff2'),
-    url('https://cdn.jsdelivr.net/gh/Innei/zshrc@0.1.0/webfont/OperatorMonoSSmLigNerdFontAAEOPSLMDI-Book.woff')
-      format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@200;300;400;500;600;700&display=swap');
+
+@font-face {
+  font-family: 'OperatorMonoSSmLig Nerd Font';
+  src:
+    url('https://cdn.jsdelivr.net/gh/Innei/zshrc@0.1.0/webfont/OperatorMonoSSmLigNerdFontAAEOPSLMDI-Italic.woff2')
+      format('woff2'),
+    url('https://cdn.jsdelivr.net/gh/Innei/zshrc@0.1.0/webfont/OperatorMonoSSmLigNerdFontAAEOPSLMDI-Italic.woff')
+      format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'OperatorMonoSSmLig Nerd Font';
+  src:
+    url('https://cdn.jsdelivr.net/gh/Innei/zshrc@0.1.0/webfont/OperatorMonoSSmLigNerdFontAAEOPSLMDI-Book.woff2')
+      format('woff2'),
+    url('https://cdn.jsdelivr.net/gh/Innei/zshrc@0.1.0/webfont/OperatorMonoSSmLigNerdFontAAEOPSLMDI-Book.woff')
+      format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Operator Mono';
+  src:
+    url('https://cdn.jsdelivr.net/gh/Innei/zshrc@0.1.0/webfont/OperatorMonoSSmLigNerdFontAAEOPSLMDI-Italic.woff2')
+      format('woff2'),
+    url('https://cdn.jsdelivr.net/gh/Innei/zshrc@0.1.0/webfont/OperatorMonoSSmLigNerdFontAAEOPSLMDI-Italic.woff')
+      format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Operator Mono';
+  src:
+    url('https://cdn.jsdelivr.net/gh/Innei/zshrc@0.1.0/webfont/OperatorMonoSSmLigNerdFontAAEOPSLMDI-Book.woff2')
+      format('woff2'),
+    url('https://cdn.jsdelivr.net/gh/Innei/zshrc@0.1.0/webfont/OperatorMonoSSmLigNerdFontAAEOPSLMDI-Book.woff')
+      format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
