@@ -98,7 +98,7 @@ export default function TimelinePage() {
   const { data } = useQuery<TimelineData>({
     queryKey: ['timeline', nextType, year],
     initialData,
-    enabled: !!nextType,
+    enabled: nextType !== undefined,
     queryFn: async ({ queryKey }) => {
       const [, nextType, year] = queryKey as [string, TimelineType, string]
       return (await apiClient.aggregate
