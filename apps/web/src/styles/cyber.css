@@ -84,6 +84,7 @@ html[data-theme='dark'] body,
 html.cyber-dark body {
   background-color: var(--cyber-bg) !important;
   color: #fff;
+  cursor: none;
 }
 
 /* hide default theme "noise" texture when in cyber mode to keep CRT clean */
@@ -161,6 +162,11 @@ html.cyber-dark.noise body::before {
   .cyber-cursor,
   .cyber-crt {
     display: none;
+  }
+
+  html[data-theme='dark'] body,
+  html.cyber-dark body {
+    cursor: auto;
   }
 }
 
