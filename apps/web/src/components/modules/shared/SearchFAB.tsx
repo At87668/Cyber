@@ -81,7 +81,7 @@ const SearchPanel = () => {
       <AnimatePresence>
         {panelOpen && (
           <Dialog.Portal>
-            <Dialog.Content>
+            <Dialog.Content aria-describedby={undefined}>
               <Dialog.DialogTitle className="sr-only">
                 Search
               </Dialog.DialogTitle>

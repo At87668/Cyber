@@ -57,7 +57,7 @@ export const BanCopyWrapper: FC<PropsWithChildren> = (props) => {
           {showCopyWarn && (
             <DialogPortal>
               <ModalOverlay />
-              <DialogContent asChild>
+              <DialogContent asChild aria-describedby={undefined}>
                 <m.div
                   className="center fixed inset-0 z-[999] flex flex-col gap-4"
                   exit={{
