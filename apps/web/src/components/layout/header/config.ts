@@ -60,7 +60,7 @@ export const headerMenuConfig: IHeaderMenu[] = [
     title: '时光',
     titleKey: 'nav_timeline',
     icon: h(FaSolidHistory),
-    path: '/timeline',
+    path: '/timeline?type=post',
     subMenu: [
       {
         title: '手记',

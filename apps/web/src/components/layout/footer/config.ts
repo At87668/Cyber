@@ -22,7 +22,7 @@ export const defaultLinkSections: LinkSection[] = [
     links: [
       {
         name: '时间线',
-        href: '/timeline',
+        href: '/timeline?type=post',
       },
       {
         name: '友链',

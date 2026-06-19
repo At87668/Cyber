@@ -48,7 +48,7 @@ export const Windsock = () => {
       {
         title: t('windsock_timeline'),
         icon: FaSolidHistory,
-        path: '/timeline',
+        path: '/timeline?type=post',
       },
       {
         title: t('windsock_friends'),

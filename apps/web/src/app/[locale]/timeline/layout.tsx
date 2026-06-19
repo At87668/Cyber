@@ -33,7 +33,7 @@ export default definePrerenderPage<{
     const nextType = {
       post: TimelineType.Post,
       note: TimelineType.Note,
-    }[type]
+    }[type || 'post']
     if (!nextType) return
     const queryClient = getQueryClient()
     await queryClient.fetchQuery({

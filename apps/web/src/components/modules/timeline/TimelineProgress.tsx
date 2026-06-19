@@ -10,7 +10,7 @@ import {
   secondOfDays,
 } from '~/lib/datetime'
 
-const PROGRESS_DURATION = 2
+const PROGRESS_DURATION = 2000
 export const TimelineProgress = () => {
   const [percentOfYear, setPercentYear] = useState(0)
   const [percentOfDay, setPercentDay] = useState(0)
