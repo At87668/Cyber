@@ -1,25 +1,24 @@
 # Cyber
 
 > [!IMPORTANT]
-> **Cyber 已进入维护模式，将停留在当前版本，不再添加新功能，仅修复关键 Bug。**
+> **Cyber 是 [Shiro](https://github.com/Innei/Shiro) 的分支, 不要向原作者报告问题!**
 >
-> 如果你正在寻找一个全新的个人博客前端，请关注 **[余白 / Yohaku](https://github.com/Innei/Yohaku)** — 一个独立的新项目，拥有全新的设计语言与视觉体系。完整代码需 [赞助](https://github.com/sponsors/Innei) 获取访问权限。
->
-> **Cyber 要求 Mix Space Core 版本 == 10.x**，不兼容更高版本。
+> 目前 **Cyber 仅支持 Mix Space Core 版本 == 13.x (API v3)**。
 
-一个极简主义的个人网站主题，如纸的纯净，似雪的清新。
+由 [Shiro](https://github.com/Innei/Shiro) 分支而来, 支持了`API v3`并修改了一些东西使它更酷。
+
+一个有点酷的个人网站主题。
 
 专为 [Mix Space](https://github.com/mx-space) 生态系统设计的现代化个人站点前端。
 
 ## :sparkles: 示例站点
 
-以下是一些使用 Cyber 主题的精美站点：
+以下是一些使用 Cyber 主题的站点：
 
-- [静かな森](https://innei.in)
-- [可愛い松](https://blog.wibus.ren/)
+- [竹かさ雨](https://blog.star-dust.link)
 
 
-欢迎体验 Cyber 带来的极简之美！
+欢迎体验 Cyber 带来的赛博炫酷！
 
 ## :rocket: 核心特性
 
@@ -49,122 +48,28 @@
 
 ## 📖 部署指南
 
-详细的部署教程请参考：https://mx-space.js.org/docs/themes/cyber/deploy
-
-感谢 @wibus-wee、@wuhang2003 等社区贡献者编写的详细文档。
+详细的部署教程请参考：暂时没有
 
 ## :camera: 界面预览
 
-<img width="1471" alt="Live Demo" src="https://github.com/At87668/Cyber/assets/41265413/bf8af4ec-0f0c-441a-8c06-4b44e1649597">
-
-<details>
-<summary>
-点击查看更多完整页面截图
-</summary>
-
-![页面截图 1](https://github.com/At87668/Cyber/assets/41265413/1b85c9be-0cd3-46b5-a089-a9ab97fdfecb)
-![页面截图 2](https://github.com/At87668/Cyber/assets/41265413/d808d288-c022-42f2-8d74-ad057a588771)
-
-</details>
-
-## :zap: 性能测试
-
-在 M2 MacBook Air 环境下对重负载页面的性能测试结果：
-
-![性能测试结果](https://github.com/At87668/Cyber/assets/41265413/f76152af-4a52-46a2-9b83-20567800ba75)
+<img width="1471" alt="Live Demo" src="./assets/livedemo.png">
 
 ## :whale: 快速开始
 
-### :package: 预构建版本
+#### Vercel 一键部署
 
-从 [Releases](https://github.com/At87668/Cyber/releases) 页面下载最新的 `release.zip` 压缩包并解压：
-
-```bash
-cd standalone
-vim .env # 配置环境变量
-export PORT=2323
-node server.js
-```
-
-### :docker: Docker Compose（推荐）
-
-```bash
-mkdir cyber && cd cyber
-wget https://raw.githubusercontent.com/At87668/Cyber/main/docker-compose.yml
-wget https://raw.githubusercontent.com/At87668/Cyber/main/.env.template .env
-
-vim .env # 配置环境变量
-mkdir public # 放置自定义 Favicon
-docker compose up -d
-
-# 后续更新
-docker compose pull
-```
+[![Deploy with Vercel](https://vercel.com/button?x-oss-process=image/resize,m_mfit,w_320,h_320)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FAt87668%2FCyber&env=AUTH_SECRET,ADMIN_EMAIL&envDescription=You%20need%20to%20fill%20in%20these%20environment%20variables%20for%20the%20program%20to%20work.&envLink=https%3A%2F%2Fgithub.com%2FAt87668%2FNextWebUI%2Fblob%2Fmain%2F.env.example&project-name=nextwebui&repository-name=nextwebui-cloned&products=%5B%7B%22type%22%3A%22integration%22%2C%22protocol%22%3A%22storage%22%2C%22productSlug%22%3A%22neon%22%2C%22integrationSlug%22%3A%22neon%22%7D%2C%7B%22type%22%3A%22blob%22%7D%5D&integration-ids=oac_4nMvFhFSbAGAK6MU5mUFFILs)
 
 ## :memo: Markdown 扩展
 
-了解更多 Markdown 扩展语法，请访问：https://cyber.innei.in/#/markdown
-
-## :star: 余白 / Yohaku
-
-**[余白 / Yohaku](https://github.com/Innei/Yohaku)** 是一个全新的个人博客项目，拥有独立的设计语言与视觉体系。如果你希望获得持续更新的体验，推荐关注 Yohaku。
-
-[![Sponsor](https://img.shields.io/badge/Sponsor-Innei-ea4aaa?logo=github-sponsors&logoColor=white)](https://github.com/sponsors/Innei)
-
-## :star: 白い (Cyberi) - 赞助版
-
-[白い](https://github.com/innei-dev/Cyberi) 是 Cyber 的付费赞助版本，包含更多高级功能：
-
-### :robot: AI 智能功能
-
-- AI 智能摘要生成
-- AI 内容翻译系统（支持实时翻译推送）
-- AI 生成标记系统（支持标记翻译、摘要、自动生成等内容来源）
-
-### :sparkles: 高级视觉效果
-
-- WebGPU 雪花背景效果（高级粒子物理系统）
-- 萤火虫粒子效果
-- 纹理背景系统
-- 页面渐变色背景
-- 噪声背景生成
-
-### :busts_in_silhouette: 实时协作
-
-- Socket.IO 房间管理
-- 在线用户实时展示（Presence 组件）
-- 访客信息追踪
-
-### :lock: 认证系统
-
-- Passkey 无密码认证支持
-- Passkey 管理页面（创建、列表）
-
-### :speech_balloon: 评论系统增强
-
-- Lexical 富文本评论编辑器
-- 评论内联编辑功能
-- 评论操作按钮组（编辑/回复）
-
-### :bar_chart: 后台系统
-
-- 完整的仪表盘界面
-- Lexical 富文本编辑器
-- 文章/笔记编辑器增强
-- 每日诗词展示（今日诗词 API）
-
-### :chart_with_upwards_trend: 分析集成
-
-- OpenPanel 用户行为分析
-- 屏幕视图追踪
-- 外链点击追踪
+了解更多 Markdown 扩展语法，请访问：https://shiro.innei.in/#/markdown
 
 ## :heart: 致谢与许可
 
-**© 2026 Innei** - 本项目采用 AGPLv3 许可证，并附加特定的商业使用条件。
+**© 2026 Innei**
+
+**© 2026 Author87668**
+
+- 本项目采用 AGPLv3 许可证，并附加特定的商业使用条件。
 
 使用本项目需要遵循 [附加条款和条件](ADDITIONAL_TERMS.md)。
-
----
-
-> [个人网站](https://innei.in/) · GitHub [@Innei](https://github.com/innei/)
