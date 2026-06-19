@@ -167,11 +167,6 @@ html.cyber-dark.noise body::before {
   .cyber-crt {
     display: none;
   }
-
-  html.cyber-dark body,
-  html.cyber-dark body * {
-    cursor: auto !important;
-  }
 }
 
 /* -------------------------------------------------------------------
@@ -730,6 +725,29 @@ html.cyber-dark.noise body::before {
 [data-theme='light'] .cyber-header a:hover {
   color: #0097a7 !important;
   text-shadow: none;
+}
+
+/* Header button / action items → parallelogram */
+html.cyber-dark .cyber-header [class*="rounded-full"],
+html.cyber-dark .cyber-header [class*="rounded-xl"],
+html.cyber-dark .cyber-header [class*="rounded-lg"],
+html.cyber-dark .cyber-header [class*="rounded-md"] {
+  border-radius: 0 !important;
+  clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%) !important;
+}
+
+/* Menu / dropdown items → parallelogram */
+html.cyber-dark [role="menu"],
+html.cyber-dark [role="menu"] [class*="rounded"] {
+  border-radius: 0 !important;
+  clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%) !important;
+}
+
+/* Popover / float-panel containers → parallelogram */
+html.cyber-dark .float-panel,
+html.cyber-dark .float-popover {
+  border-radius: 0 !important;
+  clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%) !important;
 }
 
 /* -------------------------------------------------------------------
