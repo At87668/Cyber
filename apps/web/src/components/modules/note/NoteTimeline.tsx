@@ -53,7 +53,7 @@ const NoteTimelineImpl = () => {
       }>({
         params: { size: 10, lang },
       })
-      return data.data
+      return Array.isArray(data) ? data : (data?.data ?? [])
     },
     enabled: noteId !== undefined,
     placeholderData: keepPreviousData,

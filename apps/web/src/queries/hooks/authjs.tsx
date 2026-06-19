@@ -16,12 +16,11 @@ import { useAggregationSelector } from '~/providers/root/aggregation-data-provid
 export const useAuthProviders = () => {
   const { data } = useQuery({
     queryKey: ['providers'],
-    queryFn: () =>
-      apiClient.proxy.auth.providers
-        .get<{
-          data: AuthSocialProviders[]
-        }>()
-        .then((res: { data: AuthSocialProviders[] }) => res.data),
+    queryFn: async () => {
+      const res =
+        await apiClient.proxy.auth.providers.get<AuthSocialProviders[]>()
+      return Array.isArray(res) ? res : ((res as any)?.data ?? [])
+    },
     refetchOnMount: 'always',
     meta: {
       persist: true,
