@@ -687,19 +687,24 @@ html.cyber-dark.noise body::before {
 }
 
 /* -------------------------------------------------------------------
- * 12. Header overrides
+ * 12. Header — cyberpunk redesign
+ *     Parallelogram nav bar, diamond action buttons, neon glow
  * ------------------------------------------------------------------- */
+
+/* --- Main header container --- */
 .cyber-header {
-  background: rgba(5, 5, 5, 0.75) !important;
-  border-bottom: 1px solid var(--cyber-border);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(3, 3, 3, 0.82) !important;
+  border-bottom: 1px solid var(--cyber-border-strong);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   font-family: var(--cyber-font-mono);
+  box-shadow: 0 1px 0 0 rgba(0, 243, 255, 0.12);
 }
 
 [data-theme='light'] .cyber-header {
-  background: rgba(255, 255, 255, 0.85) !important;
-  border-bottom-color: rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.88) !important;
+  border-bottom-color: rgba(0, 151, 167, 0.25);
+  box-shadow: 0 1px 0 0 rgba(0, 151, 167, 0.12);
 }
 
 .cyber-header a,
@@ -708,6 +713,7 @@ html.cyber-dark.noise body::before {
 .cyber-header h2 {
   color: #d6d6d6 !important;
   letter-spacing: 0.04em;
+  font-family: var(--cyber-font-mono);
 }
 
 [data-theme='light'] .cyber-header a,
@@ -727,27 +733,96 @@ html.cyber-dark.noise body::before {
   text-shadow: none;
 }
 
-/* Header button / action items → parallelogram */
-html.cyber-dark .cyber-header [class*="rounded-full"],
-html.cyber-dark .cyber-header [class*="rounded-xl"],
-html.cyber-dark .cyber-header [class*="rounded-lg"],
-html.cyber-dark .cyber-header [class*="rounded-md"] {
+/* --- Nav pill → parallelogram bar --- */
+html.cyber-dark .cyber-header nav,
+html.cyber-dark .cyber-header nav > div:first-child {
   border-radius: 0 !important;
-  clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%) !important;
+  clip-path: polygon(2% 0, 100% 0, 98% 100%, 0 100%) !important;
+  border: 1px solid var(--cyber-border-strong) !important;
+  background: linear-gradient(135deg, rgba(0, 243, 255, 0.06), rgba(3, 3, 3, 0.9)) !important;
+  box-shadow: 0 0 12px rgba(0, 243, 255, 0.08), inset 0 1px 0 rgba(0, 243, 255, 0.1) !important;
 }
 
-/* Menu / dropdown items → parallelogram */
-html.cyber-dark [role="menu"],
-html.cyber-dark [role="menu"] [class*="rounded"] {
-  border-radius: 0 !important;
-  clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%) !important;
+[data-theme='light'] html.cyber-dark .cyber-header nav,
+[data-theme='light'] html.cyber-dark .cyber-header nav > div:first-child {
+  background: linear-gradient(135deg, rgba(0, 151, 167, 0.08), rgba(255, 255, 255, 0.92)) !important;
+  box-shadow: 0 0 10px rgba(0, 151, 167, 0.08) !important;
+  border-color: rgba(0, 151, 167, 0.3) !important;
 }
 
-/* Popover / float-panel containers → parallelogram */
-html.cyber-dark .float-panel,
-html.cyber-dark .float-popover {
+/* Hide spotlight overlay — doesn't fit parallelogram shape */
+html.cyber-dark .cyber-header nav > div:first-child > div:first-child {
+  display: none !important;
+}
+
+/* --- Action buttons → diamonds --- */
+html.cyber-dark .cyber-header [class*="rounded-full"][role="button"],
+html.cyber-dark .cyber-header [class*="rounded-full"][tabindex] {
+  border-radius: 0 !important;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%) !important;
+  border: 1px solid var(--cyber-cyan) !important;
+  background: rgba(0, 243, 255, 0.08) !important;
+  box-shadow: 0 0 8px rgba(0, 243, 255, 0.12) !important;
+  transition: border-color 0.3s, box-shadow 0.3s, background 0.3s !important;
+}
+
+html.cyber-dark .cyber-header [class*="rounded-full"][role="button"]:hover,
+html.cyber-dark .cyber-header [class*="rounded-full"][tabindex]:hover {
+  border-color: var(--cyber-purple) !important;
+  background: rgba(188, 19, 254, 0.12) !important;
+  box-shadow: 0 0 15px rgba(188, 19, 254, 0.2) !important;
+}
+
+[data-theme='light'] html.cyber-dark .cyber-header [class*="rounded-full"][role="button"],
+[data-theme='light'] html.cyber-dark .cyber-header [class*="rounded-full"][tabindex] {
+  border-color: #0097a7 !important;
+  background: rgba(0, 151, 167, 0.08) !important;
+  box-shadow: 0 0 8px rgba(0, 151, 167, 0.1) !important;
+}
+
+/* --- Owner status dot → diamond --- */
+html.cyber-dark .cyber-header [class*="rounded-full"][class*="size-4"],
+html.cyber-dark .cyber-header [class*="rounded-full"][class*="size-6"] {
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%) !important;
+}
+
+/* --- Menu dropdown → parallelogram --- */
+html.cyber-dark .cyber-header + div [class*="rounded-xl"],
+html.cyber-dark [data-radix-popper-content-wrapper] [class*="rounded-xl"] {
   border-radius: 0 !important;
   clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%) !important;
+  border: 1px solid var(--cyber-border-strong) !important;
+  background: rgba(5, 5, 5, 0.92) !important;
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.1), 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(16px) !important;
+}
+
+[data-theme='light'] html.cyber-dark .cyber-header + div [class*="rounded-xl"],
+[data-theme='light'] html.cyber-dark [data-radix-popper-content-wrapper] [class*="rounded-xl"] {
+  background: rgba(255, 255, 255, 0.94) !important;
+  border-color: rgba(0, 151, 167, 0.3) !important;
+  box-shadow: 0 0 15px rgba(0, 151, 167, 0.08), 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Menu dropdown items — neon hover */
+html.cyber-dark [data-radix-popper-content-wrapper] a[role="button"]:hover,
+html.cyber-dark [data-radix-popper-content-wrapper] a:hover {
+  background: rgba(0, 243, 255, 0.06) !important;
+  color: var(--cyber-cyan) !important;
+  text-shadow: 0 0 6px rgba(0, 243, 255, 0.3);
+}
+
+[data-theme='light'] html.cyber-dark [data-radix-popper-content-wrapper] a[role="button"]:hover,
+[data-theme='light'] html.cyber-dark [data-radix-popper-content-wrapper] a:hover {
+  background: rgba(0, 151, 167, 0.08) !important;
+  color: #0097a7 !important;
+  text-shadow: none;
+}
+
+/* --- Sheet / drawer for mobile --- */
+html.cyber-dark [data-radix-dialog-content] {
+  border-radius: 0 !important;
+  clip-path: polygon(0 0, 100% 0, 97% 100%, 3% 100%) !important;
 }
 
 /* -------------------------------------------------------------------
