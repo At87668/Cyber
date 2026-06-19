@@ -1,6 +1,5 @@
 'use client'
 
-import { useIsDark } from '~/hooks/common/use-is-dark'
 import { clsxm } from '~/lib/helper'
 
 interface StatsBoxProps {
@@ -13,8 +12,6 @@ interface StatsBoxProps {
  * Each value glows in cyan with a subtle terminal prefix.
  */
 export const StatsBox = ({ items, className }: StatsBoxProps) => {
-  const isDark = useIsDark()
-
   return (
     <div
       className={clsxm(
@@ -32,7 +29,7 @@ export const StatsBox = ({ items, className }: StatsBoxProps) => {
           <div
             style={{
               fontFamily: 'var(--cyber-font-mono)',
-              color: isDark ? 'var(--cyber-cyan)' : '#0097a7',
+              color: 'var(--cyber-cyan)',
               fontSize: '0.75rem',
               letterSpacing: '0.1em',
               textTransform: 'uppercase',
@@ -42,14 +39,12 @@ export const StatsBox = ({ items, className }: StatsBoxProps) => {
             {item.label}
           </div>
           <div
+            className="text-accent"
             style={{
               fontFamily: 'var(--cyber-font-mono)',
-              color: isDark ? '#fff' : '#111',
               fontSize: '1.6rem',
               fontWeight: 700,
-              textShadow: isDark
-                ? '0 0 10px rgba(0,243,255,0.45)'
-                : '0 0 8px rgba(0,151,167,0.2)',
+              textShadow: '0 0 10px rgba(0,243,255,0.45)',
               marginTop: 6,
             }}
           >
