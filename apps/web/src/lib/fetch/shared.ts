@@ -141,9 +141,30 @@ export const createApiClient = (
   createClient(fetchAdapter)(API_URL, {
     controllers: allControllers,
     transformResponse: legacyTransformResponse,
-    // ofetch returns the parsed body directly (not wrapped in { data: ... }),
-    // so we need a safe getter that handles both v3 envelope responses
-    // ({ data, meta }) and edge cases where the response is undefined
-    // (e.g. 204 No Content or empty body).
-    getDataFromResponse: (res: any) => res?.data ?? res ?? null,
+    // ofetch returns the parsed body directly (not wrapped in { data: ... }).
+    // The v3 backend wraps paginated responses as:
+    //   { data: T[], meta: { pagination: { page, size, total, totalPages } } }
+    // but the web app expects the legacy shape:
+    //   { data: T[], pagination: { currentPage, totalPage, hasNextPage, ... } }
+    // We reconstruct that shape here so all downstream consumers
+    // (posts list, comments, says, series) get correct pagination info.
+    getDataFromResponse: (res: any) => {
+      if (!res) return null
+
+      // v3 paginated envelope — meta.pagination is present
+      if (res.meta?.pagination && Array.isArray(res.data)) {
+        return {
+          data: res.data,
+          pagination: remapPagination(res.meta.pagination),
+        }
+      }
+
+      // v3 non-paginated: { data: T } → return T directly
+      if ('data' in res && !Array.isArray(res.data)) {
+        return res.data
+      }
+
+      // Legacy v2 shape already has pagination at top level
+      return res.data ?? res ?? null
+    },
   })
