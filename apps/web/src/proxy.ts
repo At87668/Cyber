@@ -14,7 +14,13 @@ import {
 import { defaultLocale, locales } from './i18n/config'
 import { routing } from './i18n/routing'
 
-const intlMiddleware = createIntlMiddleware(routing)
+let intlMiddleware: ReturnType<typeof createIntlMiddleware> | null = null
+function getIntlMiddleware() {
+  if (!intlMiddleware) {
+    intlMiddleware = createIntlMiddleware(routing)
+  }
+  return intlMiddleware
+}
 
 const NEXT_INTL_LOCALE_HEADER = 'X-NEXT-INTL-LOCALE'
 
@@ -94,108 +100,113 @@ const shouldSkipIntl = (pathname: string) => {
 }
 
 export async function proxy(req: NextRequest) {
-  const { pathname, search } = req.nextUrl
+  try {
+    const { pathname, search } = req.nextUrl
 
-  let geo = geolocation(req)
-  const { headers } = req
-  let ip = ipAddress(req) ?? headers.get('x-real-ip')
-  const forwardedFor = headers.get('x-forwarded-for')
-  if (!ip && forwardedFor) {
-    ip = forwardedFor.split(',').at(0) ?? ''
-  }
-  const cfGeo = headers.get('cf-ipcountry')
-  if (cfGeo && !geo) {
-    geo = {
-      country: cfGeo,
-      city: headers.get('cf-ipcity') ?? '',
-      latitude: headers.get('cf-iplatitude') ?? '',
-      longitude: headers.get('cf-iplongitude') ?? '',
-      region: headers.get('cf-region') ?? '',
+    let geo = geolocation(req)
+    const { headers } = req
+    let ip = ipAddress(req) ?? headers.get('x-real-ip')
+    const forwardedFor = headers.get('x-forwarded-for')
+    if (!ip && forwardedFor) {
+      ip = forwardedFor.split(',').at(0) ?? ''
     }
-  }
-
-  const requestHeaders = new Headers(req.headers)
-  requestHeaders.set(REQUEST_PATHNAME, pathname)
-  requestHeaders.set(REQUEST_QUERY, search)
-  requestHeaders.set(REQUEST_GEO, geo?.country || 'unknown')
-  requestHeaders.set(REQUEST_IP, ip || '')
-  requestHeaders.set(REQUEST_HOST, headers.get('host') || '')
-
-  const { searchParams } = req.nextUrl
-
-  if (searchParams.has('peek-to')) {
-    const peekTo = searchParams.get('peek-to')
-    if (peekTo) {
-      const clonedUrl = req.nextUrl.clone()
-      clonedUrl.pathname = peekTo
-      clonedUrl.searchParams.delete('peek-to')
-      return NextResponse.redirect(clonedUrl)
-    }
-  }
-
-  if (!shouldSkipIntl(pathname)) {
-    // Check for unsupported locale in path and redirect to default
-    const segments = pathname.split('/').filter(Boolean)
-    const firstSegment = segments[0]
-    if (firstSegment && isUnsupportedLocale(firstSegment)) {
-      // Remove the unsupported locale prefix and redirect
-      const newPathname = `/${segments.slice(1).join('/')}`
-      const clonedUrl = req.nextUrl.clone()
-      clonedUrl.pathname = newPathname || '/'
-      return NextResponse.redirect(clonedUrl)
+    const cfGeo = headers.get('cf-ipcountry')
+    if (cfGeo && !geo) {
+      geo = {
+        country: cfGeo,
+        city: headers.get('cf-ipcity') ?? '',
+        latitude: headers.get('cf-iplatitude') ?? '',
+        longitude: headers.get('cf-iplongitude') ?? '',
+        region: headers.get('cf-region') ?? '',
+      }
     }
 
-    const intlResponse = intlMiddleware(req)
+    const requestHeaders = new Headers(req.headers)
+    requestHeaders.set(REQUEST_PATHNAME, pathname)
+    requestHeaders.set(REQUEST_QUERY, search)
+    requestHeaders.set(REQUEST_GEO, geo?.country || 'unknown')
+    requestHeaders.set(REQUEST_IP, ip || '')
+    requestHeaders.set(REQUEST_HOST, headers.get('host') || '')
 
-    // Copy headers from intl response
-    if (intlResponse.headers) {
-      intlResponse.headers.forEach((value, key) => {
-        requestHeaders.set(key, value)
-      })
+    const { searchParams } = req.nextUrl
+
+    if (searchParams.has('peek-to')) {
+      const peekTo = searchParams.get('peek-to')
+      if (peekTo) {
+        const clonedUrl = req.nextUrl.clone()
+        clonedUrl.pathname = peekTo
+        clonedUrl.searchParams.delete('peek-to')
+        return NextResponse.redirect(clonedUrl)
+      }
     }
 
-    // Persist resolved locale for server-side fetching (e.g. as `x-lang`)
-    requestHeaders.set(
-      REQUEST_LOCALE,
-      getLocaleFromIntlResponseHeaders(intlResponse.headers) ||
-        getLocaleFromRequest(req, pathname),
-    )
+    if (!shouldSkipIntl(pathname)) {
+      // Check for unsupported locale in path and redirect to default
+      const segments = pathname.split('/').filter(Boolean)
+      const firstSegment = segments[0]
+      if (firstSegment && isUnsupportedLocale(firstSegment)) {
+        // Remove the unsupported locale prefix and redirect
+        const newPathname = `/${segments.slice(1).join('/')}`
+        const clonedUrl = req.nextUrl.clone()
+        clonedUrl.pathname = newPathname || '/'
+        return NextResponse.redirect(clonedUrl)
+      }
 
-    // Handle redirects
-    if (
-      intlResponse.status === 307 ||
-      intlResponse.status === 308 ||
-      intlResponse.headers.get('location')
-    ) {
-      return intlResponse
-    }
+      const intlResponse = getIntlMiddleware()(req)
 
-    // Handle rewrites (for as-needed mode with default locale)
-    const rewriteHeader = intlResponse.headers.get('x-middleware-rewrite')
-    if (rewriteHeader) {
-      const rewriteUrl = new URL(rewriteHeader)
-      return NextResponse.rewrite(rewriteUrl, {
+      // Copy headers from intl response
+      if (intlResponse.headers) {
+        intlResponse.headers.forEach((value, key) => {
+          requestHeaders.set(key, value)
+        })
+      }
+
+      // Persist resolved locale for server-side fetching (e.g. as `x-lang`)
+      requestHeaders.set(
+        REQUEST_LOCALE,
+        getLocaleFromIntlResponseHeaders(intlResponse.headers) ||
+          getLocaleFromRequest(req, pathname),
+      )
+
+      // Handle redirects
+      if (
+        intlResponse.status === 307 ||
+        intlResponse.status === 308 ||
+        intlResponse.headers.get('location')
+      ) {
+        return intlResponse
+      }
+
+      // Handle rewrites (for as-needed mode with default locale)
+      const rewriteHeader = intlResponse.headers.get('x-middleware-rewrite')
+      if (rewriteHeader) {
+        const rewriteUrl = new URL(rewriteHeader)
+        return NextResponse.rewrite(rewriteUrl, {
+          request: {
+            headers: requestHeaders,
+          },
+        })
+      }
+
+      return NextResponse.next({
         request: {
           headers: requestHeaders,
         },
       })
     }
 
+    // Routes that skip next-intl still benefit from having a stable locale header.
+    requestHeaders.set(REQUEST_LOCALE, getLocaleFromRequest(req, pathname))
+
     return NextResponse.next({
       request: {
         headers: requestHeaders,
       },
     })
+  } catch (e) {
+    console.error('[proxy] error:', e)
+    return NextResponse.next()
   }
-
-  // Routes that skip next-intl still benefit from having a stable locale header.
-  requestHeaders.set(REQUEST_LOCALE, getLocaleFromRequest(req, pathname))
-
-  return NextResponse.next({
-    request: {
-      headers: requestHeaders,
-    },
-  })
 }
 
 export const config = {

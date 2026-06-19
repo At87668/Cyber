@@ -1,9 +1,9 @@
 # Cyber
 
 > [!IMPORTANT]
-> **Cyber 是 [Shiro](https://github.com/Innei/Shiro) 的分支, 不要向原作者报告问题!**
+> - **Cyber 是 [Shiro](https://github.com/Innei/Shiro) 的社区分支**，请勿向原作者 (Innei) 报告本项目的 Issue。
 >
-> 目前 **Cyber 仅支持 Mix Space Core 版本 == 13.x (API v3)**。
+> - **版本要求**：目前 Cyber **仅支持 Mix Space Core 版本 == 13.x (API v3)**。
 
 由 [Shiro](https://github.com/Innei/Shiro) 分支而来, 支持了`API v3`并修改了一些东西使它更酷。
 
