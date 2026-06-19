@@ -78,11 +78,13 @@ const SearchPanel = () => {
   return (
     <Dialog.Root open>
       {panelOpen && <Dialog.Overlay />}
-      <Dialog.DialogTitle className="hidden">Search</Dialog.DialogTitle>
       <AnimatePresence>
         {panelOpen && (
           <Dialog.Portal>
             <Dialog.Content>
+              <Dialog.DialogTitle className="sr-only">
+                Search
+              </Dialog.DialogTitle>
               <div className="center fixed inset-0 z-20 flex">
                 <div
                   className="fixed inset-0 z-[-1]"

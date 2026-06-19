@@ -128,6 +128,7 @@ export default function TimelinePage() {
   if (!memory) {
     posts.forEach((post) => {
       const date = new Date(post.created)
+      if (Number.isNaN(date.getTime())) return
       const year = date.getFullYear()
       const data: MapType = {
         title: post.title,
@@ -149,6 +150,7 @@ export default function TimelinePage() {
     .filter((n) => (memory ? n.bookmark : true))
     .forEach((note) => {
       const date = new Date(note.created)
+      if (Number.isNaN(date.getTime())) return
       const year = date.getFullYear()
       const data: MapType = {
         title: note.title,

@@ -51,7 +51,7 @@ export const AsideDonateButton = () => {
                 <>
                   <ModalOverlay />
                   <DialogContent className="center fixed inset-0 z-[999] flex flex-col">
-                    <DialogTitle className="hidden">Donate</DialogTitle>
+                    <DialogTitle className="sr-only">Donate</DialogTitle>
                     <DonateContent />
 
                     <DonateButtonTop />

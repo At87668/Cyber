@@ -67,7 +67,7 @@ export const BanCopyWrapper: FC<PropsWithChildren> = (props) => {
                     setShowCopyWarn(false)
                   }}
                 >
-                  <DialogTitle className="hidden">注意</DialogTitle>
+                  <DialogTitle className="sr-only">注意</DialogTitle>
                   <div className="pointer-events-none mt-0 text-3xl font-medium text-red-400 dark:text-orange-500">
                     注意：
                   </div>
