@@ -43,7 +43,7 @@ export default function Home() {
     },
     keywords: config?.seo?.keywords,
   }
-  const { notes, posts } = useHomeQueryData()
+  const { notes = [], posts = [] } = useHomeQueryData() ?? {}
   const listLdJson: WithContext<ItemList> = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',

@@ -84,7 +84,11 @@ html[data-theme='dark'] body,
 html.cyber-dark body {
   background-color: var(--cyber-bg) !important;
   color: #fff;
-  cursor: none;
+}
+
+/* Hide system cursor globally in cyber mode */
+html.cyber-dark body * {
+  cursor: none !important;
 }
 
 /* hide default theme "noise" texture when in cyber mode to keep CRT clean */
@@ -164,9 +168,9 @@ html.cyber-dark.noise body::before {
     display: none;
   }
 
-  html[data-theme='dark'] body,
-  html.cyber-dark body {
-    cursor: auto;
+  html.cyber-dark body,
+  html.cyber-dark body * {
+    cursor: auto !important;
   }
 }
 
@@ -775,4 +779,70 @@ html.cyber-dark .border-accent {
 html.cyber-dark .bg-accent {
   background-color: var(--cyber-cyan) !important;
   color: #000;
+}
+
+/* -------------------------------------------------------------------
+ * 14. Global shape overrides — parallelogram / diamond
+ *     In cyber-dark mode, convert every rounded shape to
+ *     parallelograms (rectangles) or diamonds (circles).
+ * ------------------------------------------------------------------- */
+
+/* --- Circles → Diamonds --- */
+
+html.cyber-dark [class*="rounded-full"] {
+  border-radius: 0 !important;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%) !important;
+}
+
+/* --- Rounded rectangles → Parallelograms --- */
+
+html.cyber-dark [class*="rounded-xl"] {
+  border-radius: 0 !important;
+  clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%) !important;
+}
+
+html.cyber-dark [class*="rounded-lg"] {
+  border-radius: 0 !important;
+  clip-path: polygon(2% 0, 100% 0, 98% 100%, 0 100%) !important;
+}
+
+html.cyber-dark [class*="rounded-md"] {
+  border-radius: 0 !important;
+  clip-path: polygon(1.5% 0, 100% 0, 98.5% 100%, 0 100%) !important;
+}
+
+html.cyber-dark [class*="rounded-2xl"] {
+  border-radius: 0 !important;
+  clip-path: polygon(4% 0, 100% 0, 96% 100%, 0 100%) !important;
+}
+
+html.cyber-dark [class*="rounded-sm"],
+html.cyber-dark [class*="rounded-none"] {
+  border-radius: 0 !important;
+}
+
+/* Exclude interactive UI controls where round shape is essential */
+html.cyber-dark .switch-root,
+html.cyber-dark [role="switch"],
+html.cyber-dark [role="slider"] {
+  clip-path: none !important;
+  border-radius: revert !important;
+}
+
+/* Exclude SVG elements from clip-path override */
+html.cyber-dark svg,
+html.cyber-dark svg * {
+  clip-path: none !important;
+}
+
+/* Exclude markdown content images — keep them readable */
+html.cyber-dark .markdown-body img {
+  clip-path: none !important;
+  border-radius: revert !important;
+}
+
+/* Exclude toast close buttons and navigation dots */
+html.cyber-dark .markdown-body [class*="rounded"] {
+  clip-path: none !important;
+  border-radius: revert !important;
 }

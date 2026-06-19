@@ -21,6 +21,7 @@ export function useCommentsQuery(refId: string) {
     meta: {
       persist: false,
     },
+    enabled: !!refId,
     getNextPageParam: (lastPage) =>
       lastPage.pagination.hasNextPage
         ? lastPage.pagination.currentPage + 1

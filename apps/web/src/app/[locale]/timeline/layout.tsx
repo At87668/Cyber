@@ -44,7 +44,7 @@ export default definePrerenderPage<{
             type: nextType,
             year: +(year || 0) || undefined,
           })
-          .then((res: { data: unknown }) => res.data),
+          .then((res: any) => res?.data ?? res ?? null),
     })
   },
   Component: async (props: PropsWithChildren) => {

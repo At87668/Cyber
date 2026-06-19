@@ -34,10 +34,11 @@ interface RSSProps {
 export async function GET() {
   const ReactDOM = (await import('react-dom/server')).default
 
-  const [{ author, data, url }, agg] = await Promise.all([
+  const [feedRes, agg] = await Promise.all([
     apiClient.aggregate.proxy.feed.get<RSSProps>(),
     apiClient.aggregate.getAggregateData<AppThemeConfig>('cyber'),
   ])
+  const { author, data = [], url } = feedRes ?? {}
 
   const { title, description } = agg.seo
 

@@ -13,7 +13,7 @@ import { useHomeQueryData } from '../query'
 
 export const ActivityPostList = () => {
   const t = useTranslations('post')
-  const { notes, posts } = useHomeQueryData()
+  const { notes = [], posts = [] } = useHomeQueryData() ?? {}
   return (
     <m.section
       initial={{ opacity: 0.0001, y: 50 }}

@@ -34,7 +34,7 @@ export async function GET() {
     pubDate: now.toUTCString(),
   })
 
-  for (const say of says.data) {
+  for (const say of says?.data ?? []) {
     feed.item({
       title: `来源于 ${say.source || say.author} 的一言`,
       description: `${say.text}\n\n —— ${say.source || say.author}`,

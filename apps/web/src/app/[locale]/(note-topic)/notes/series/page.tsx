@@ -11,7 +11,10 @@ import { definePrerenderPage } from '~/lib/request.server'
 import { routeBuilder, Routes } from '~/lib/route-builder'
 
 export default definePrerenderPage()<TopicModel[]>({
-  fetcher: async () => (await apiClient.topic.getAll()).data,
+  fetcher: async () => {
+    const result = await apiClient.topic.getAll()
+    return Array.isArray(result) ? result : ((result as any)?.data ?? [])
+  },
   Component: ({ data }) => (
     <BottomToUpSoftScaleTransitionView>
       <header className="prose">

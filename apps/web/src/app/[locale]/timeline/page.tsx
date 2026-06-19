@@ -101,12 +101,12 @@ export default function TimelinePage() {
     enabled: !!nextType,
     queryFn: async ({ queryKey }) => {
       const [, nextType, year] = queryKey as [string, TimelineType, string]
-      return await apiClient.aggregate
+      return (await apiClient.aggregate
         .getTimeline({
           type: nextType,
           year: +(year || 0) || undefined,
         })
-        .then((res: { data: TimelineData }) => res.data)
+        .then((res: any) => res?.data ?? res ?? null)) as TimelineData
     },
   })
 

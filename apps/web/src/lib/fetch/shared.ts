@@ -2,6 +2,7 @@ import {
   allControllers,
   createClient,
   type IRequestAdapter,
+  simpleCamelcaseKeys,
 } from '@mx-space/api-client'
 import type { $fetch } from 'ofetch'
 
@@ -128,11 +129,11 @@ const isPaginateLike = (
 const legacyTransformResponse = <T = any>(data: any): T => {
   if (isPaginateLike(data)) {
     return {
-      ...data,
+      ...simpleCamelcaseKeys(data),
       pagination: remapPagination(data.pagination),
     } as T
   }
-  return data as T
+  return simpleCamelcaseKeys(data) as T
 }
 
 export const createApiClient = (

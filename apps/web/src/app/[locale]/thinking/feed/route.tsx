@@ -36,7 +36,7 @@ export async function GET() {
     pubDate: now.toUTCString(),
   })
 
-  for (const t of thinking.data) {
+  for (const t of thinking?.data ?? []) {
     feed.item({
       title: new Date(t.created).toLocaleDateString(),
       description:
