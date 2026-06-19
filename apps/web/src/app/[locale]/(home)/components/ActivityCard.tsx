@@ -19,7 +19,7 @@ import { useAggregationSelector } from '~/providers/root/aggregation-data-provid
 import type { ReactActivityType } from './types'
 
 export const iconClassName =
-  'rounded-full border shrink-0 border-accent/30 text-xs center inline-flex size-6 text-accent'
+  'border shrink-0 border-accent text-xs center inline-flex size-6 text-accent [clip-path:polygon(50%_0,100%_50%,50%_100%,0_50%)]'
 
 export const ActivityCard = ({ activity }: { activity: ReactActivityType }) => {
   const t = useTranslations('common')
@@ -61,7 +61,7 @@ export const ActivityCard = ({ activity }: { activity: ReactActivityType }) => {
                 {activity.avatar && (
                   <img
                     src={activity.avatar}
-                    className="inline size-[16px] rounded-full ring-2 ring-slate-200 dark:ring-zinc-800"
+                    className="inline size-[16px] [clip-path:polygon(50%_0,100%_50%,50%_100%,0_50%)] ring-2 ring-slate-200 dark:ring-zinc-800"
                   />
                 )}
                 <span className="font-medium">{activity.author}</span>{' '}
@@ -136,13 +136,13 @@ export const ActivityCard = ({ activity }: { activity: ReactActivityType }) => {
             <div className="flex gap-2 pl-8">
               <img
                 src={siteOwner?.avatar}
-                className="mt-4 hidden size-6 rounded-full lg:inline"
+                className="mt-4 hidden size-6 [clip-path:polygon(50%_0,100%_50%,50%_100%,0_50%)] lg:inline"
               />
               <div
                 className={clsx(
-                  'relative inline-block rounded-xl p-3 text-zinc-800 dark:text-zinc-200',
-                  'rounded-tl-sm bg-zinc-600/5 dark:bg-zinc-500/20',
-                  'max-w-full overflow-auto',
+                  'relative inline-block p-3 text-zinc-800 dark:text-zinc-200',
+                  'bg-zinc-600/5 dark:bg-zinc-500/20',
+                  'max-w-full overflow-auto [clip-path:polygon(2%_0,100%_0,98%_100%,0_100%)] [border-left:2px_solid_var(--cyber-cyan)]',
                 )}
               >
                 {RemoveMarkdown(activity.content)}

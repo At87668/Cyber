@@ -119,10 +119,11 @@ export const Hero = () => {
           {/* Hex / scanline ring around the avatar */}
           <div
             aria-hidden="true"
-            className="absolute inset-0 rounded-full"
+            className="absolute inset-0"
             style={{
+              clipPath: 'polygon(10% 0%, 100% 10%, 90% 100%, 0% 90%)',
               boxShadow:
-                '0 0 0 1px var(--cyber-cyan), 0 0 25px rgba(0,243,255,0.45), inset 0 0 25px rgba(188,19,254,0.25)',
+                '0 0 0 2px var(--cyber-cyan), 0 0 25px rgba(0,243,255,0.45), inset 0 0 25px rgba(188,19,254,0.25)',
             }}
           />
           {avatar && (
@@ -132,9 +133,12 @@ export const Hero = () => {
               src={avatar}
               alt={tCommon('aria_site_owner_avatar')}
               className={clsxm(
-                'aspect-square rounded-full border border-slate-200 dark:border-neutral-800',
+                'aspect-square border border-slate-200 dark:border-neutral-800',
                 'w-full',
               )}
+              style={{
+                clipPath: 'polygon(10% 0%, 100% 10%, 90% 100%, 0% 90%)',
+              }}
             />
           )}
         </div>

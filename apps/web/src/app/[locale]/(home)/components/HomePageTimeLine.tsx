@@ -234,7 +234,7 @@ export const HomePageTimeLine = () => {
                                       transform: `translateX(-50%) translateY(calc(-100% + ${-1 * index * 13}px - ${3 * index}px))`,
                                     }}
                                   >
-                                    <div className="h-4 w-[2px] rounded-full bg-accent" />
+                                    <div className="h-4 w-[2px] bg-accent [clip-path:polygon(0_0,100%_25%,100%_75%,0_100%)]" />
                                   </div>
                                 }
                               >
@@ -268,7 +268,7 @@ export const HomePageTimeLine = () => {
                         ease: 'easeOut',
                       }}
                     >
-                      <div className="size-[8px] -translate-x-1/4 -translate-y-1/2 rounded-full bg-accent" />
+                      <div className="size-[8px] -translate-x-1/4 -translate-y-1/2 bg-accent [clip-path:polygon(50%_0,100%_50%,50%_100%,0_50%)]" />
                     </m.div>
 
                     <FloatPopover
@@ -291,7 +291,7 @@ export const HomePageTimeLine = () => {
                           }}
                         >
                           <div
-                            className="w-[3px] rounded-md bg-accent"
+                            className="w-[3px] bg-accent [clip-path:polygon(0_0,100%_10%,100%_90%,0_100%)]"
                             style={{
                               height: `${Math.min(thisMonthTotalPost * 12, 250)}px`,
                               transformOrigin: 'bottom',
