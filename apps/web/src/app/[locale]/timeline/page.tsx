@@ -92,10 +92,10 @@ export default function TimelinePage() {
   }[type]
 
   const { data: initialData } = useQuery<TimelineData>({
-    queryKey: ['timeline'],
+    queryKey: ['timeline', nextType, year],
     enabled: false,
   })
-  const { data, refetch } = useQuery<TimelineData>({
+  const { data } = useQuery<TimelineData>({
     queryKey: ['timeline', nextType, year],
     initialData,
     enabled: !!nextType,
@@ -109,10 +109,6 @@ export default function TimelinePage() {
         .then((res: any) => res?.data ?? res ?? null)) as TimelineData
     },
   })
-
-  useEffect(() => {
-    if (nextType) refetch()
-  }, [nextType])
 
   useJumpTo()
 

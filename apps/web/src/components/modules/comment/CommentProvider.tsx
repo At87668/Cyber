@@ -83,10 +83,18 @@ export const CommentProvider: FC<{
 
   const readers = useMemo(() => {
     if (!data) return {}
-    return data?.pages.reduce(
-      (acc, curr) => ({ ...acc, ...curr.readers }),
-      {} as Record<string, ReaderModel>,
-    )
+    // v3: each comment has an embedded `reader` object.
+    // Build a readers map from individual comments.
+    const map: Record<string, ReaderModel> = {}
+    for (const page of data.pages) {
+      for (const comment of page.data) {
+        const {reader} = (comment as any)
+        if (reader && reader.id) {
+          map[reader.id] = reader
+        }
+      }
+    }
+    return map
   }, [data])
 
   if (isLoading) {

@@ -99,8 +99,10 @@ export const createFetchAdapter = (
 
 const remapPagination = (pg: any) => {
   if (!pg || typeof pg !== 'object') return pg
-  const currentPage = pg.currentPage ?? pg.page
-  const totalPage = pg.totalPage ?? pg.totalPages
+  // Support both camelCase (v2) and snake_case (v3) field names
+  const currentPage = pg.currentPage ?? pg.page ?? pg.current_page
+  const totalPage =
+    pg.totalPage ?? pg.totalPages ?? pg.total_pages ?? pg.totalpage
   const { total } = pg
   const { size } = pg
   const out: Record<string, unknown> = {
