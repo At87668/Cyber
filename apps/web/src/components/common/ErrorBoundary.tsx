@@ -8,13 +8,7 @@ import { StyledButton } from '../ui/button'
 
 const FallbackComponent = () => (
   <div className="center flex w-full flex-col py-6">
-    <p>
-      客户端组件渲染时报错，请尝试刷新页面，如果多次出现错误请联系开发者
-      <a href="mailto:i@innei.in" className="cyber-link--underline">
-        i@innei.in
-      </a>
-      .
-    </p>
+    <p>客户端组件渲染时报错，请尝试刷新页面，如果多次出现错误请联系开发者.</p>
     <StyledButton
       onClick={() => {
         window.location.reload()
