@@ -939,3 +939,121 @@ html.cyber-dark .markdown-body [class*="rounded"] {
   clip-path: none !important;
   border-radius: revert !important;
 }
+
+/* -------------------------------------------------------------------
+ * 15. Input fields — 矩形右下切角设计
+ *     Bottom-right corner clipped, light/dark theme adaptive
+ * ------------------------------------------------------------------- */
+
+/* Unselected: gray border */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="url"],
+input[type="number"],
+textarea,
+select {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%) !important;
+  border-radius: 0 !important;
+}
+
+/* Hover: dark blue (cyber-cyan with alpha) */
+input:hover,
+textarea:hover,
+select:hover {
+  border-color: rgba(0, 243, 255, 0.5) !important;
+}
+
+[data-theme='light'] input:hover,
+[data-theme='light'] textarea:hover,
+[data-theme='light'] select:hover {
+  border-color: rgba(0, 151, 167, 0.5) !important;
+}
+
+/* Focus: bright blue (cyber-cyan) */
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--cyber-cyan) !important;
+  box-shadow: 0 0 0 2px rgba(0, 243, 255, 0.2) !important;
+  outline: none !important;
+}
+
+[data-theme='light'] input:focus,
+[data-theme='light'] textarea:focus,
+[data-theme='light'] select:focus {
+  border-color: #0097a7 !important;
+  box-shadow: 0 0 0 2px rgba(0, 151, 167, 0.2) !important;
+}
+
+/* Light mode default border */
+[data-theme='light'] input,
+[data-theme='light'] textarea,
+[data-theme='light'] select {
+  border-color: #d4d4d4 !important;
+}
+
+/* Dark mode default border */
+[data-theme='dark'] input,
+[data-theme='dark'] textarea,
+[data-theme='dark'] select {
+  border-color: #525252 !important;
+}
+
+/* -------------------------------------------------------------------
+ * 16. Buttons — 平行四边形半描边设计 (semi-stroke parallelogram)
+ *     Applies to all buttons except nav/header ones (handled in §12).
+ *     Background + stroke colors keep original button palette.
+ * ------------------------------------------------------------------- */
+
+/*
+ * Semi-stroke effect: we use an ::after pseudo-element on the button
+ * to draw a parallelogram border overlay at 50% opacity, while the
+ * button body keeps its original fill colour.
+ */
+
+/* Exclude nav / header buttons from the override — they keep §12 styling */
+html.cyber-dark .cyber-header button,
+html.cyber-dark .cyber-header [role="button"] {
+  clip-path: revert !important;
+  border-radius: revert !important;
+}
+
+/* Exclude menu dropdown buttons */
+html.cyber-dark [data-radix-popper-content-wrapper] button,
+html.cyber-dark [data-radix-popper-content-wrapper] [role="button"] {
+  clip-path: revert !important;
+  border-radius: revert !important;
+}
+
+/* Parallelogram shape for non-nav buttons — semi-stroke aesthetic */
+html.cyber-dark .cyber-btn-parallelogram,
+[data-theme='dark'] .cyber-btn-parallelogram,
+html.cyber-dark button.cyber-btn-parallelogram,
+[data-theme='dark'] button.cyber-btn-parallelogram {
+  border-radius: 0 !important;
+  clip-path: polygon(4% 0, 100% 0, 96% 100%, 0 100%) !important;
+  position: relative !important;
+}
+
+/* Semi-stroke inner border via outline-offset trick */
+html.cyber-dark .cyber-btn-parallelogram::after,
+[data-theme='dark'] .cyber-btn-parallelogram::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  pointer-events: none;
+  z-index: 1;
+  border: 1.5px solid currentColor;
+  clip-path: polygon(4% 0, 100% 0, 96% 100%, 0 100%);
+  opacity: 0.4;
+  border-radius: 0 !important;
+}
+
+/* Apply to StyledButton and RoundedIconButton */
+html.cyber-dark button.inline-flex,
+[data-theme='dark'] button.inline-flex {
+  border-radius: 0 !important;
+  clip-path: polygon(4% 0, 100% 0, 96% 100%, 0 100%) !important;
+}

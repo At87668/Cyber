@@ -45,10 +45,13 @@ export const StyledButton: FC<ButtonProps> = ({
   return (
     <Wrapper>
       <MotionButtonBase
-        className={variantStyles({
-          variant,
-          className,
-        })}
+        className={clsx(
+          variantStyles({
+            variant,
+            className,
+          }),
+          'cyber-btn-parallelogram',
+        )}
         {...(props as any)}
       />
     </Wrapper>
