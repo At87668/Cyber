@@ -5,7 +5,7 @@ import { tv } from 'tailwind-variants'
 import { MotionButtonBase } from './MotionButton'
 
 const variantStyles = tv({
-  base: 'inline-flex select-none cursor-default items-center gap-2 justify-center rounded-lg py-2 px-3 text-sm outline-offset-2 transition active:transition-none',
+  base: 'inline-flex select-none cursor-default items-center gap-2 justify-center py-2 px-3 text-sm outline-offset-2 transition active:transition-none cyber-btn-parallelogram',
   variants: {
     variant: {
       primary: clsx(
@@ -16,7 +16,7 @@ const variantStyles = tv({
         'dark:text-neutral-800',
       ),
       secondary: clsx(
-        'group rounded-full bg-gradient-to-b from-zinc-50/50 to-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:from-zinc-900/50 dark:to-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20',
+        'group bg-gradient-to-b from-zinc-50/50 to-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:from-zinc-900/50 dark:to-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20',
         'disabled:cursor-not-allowed disabled:bg-zinc-400 disabled:opacity-80 disabled:dark:bg-zinc-800 disabled:dark:text-zinc-50',
       ),
     },
@@ -45,13 +45,10 @@ export const StyledButton: FC<ButtonProps> = ({
   return (
     <Wrapper>
       <MotionButtonBase
-        className={clsx(
-          variantStyles({
-            variant,
-            className,
-          }),
-          'cyber-btn-parallelogram',
-        )}
+        className={variantStyles({
+          variant,
+          className,
+        })}
         {...(props as any)}
       />
     </Wrapper>
