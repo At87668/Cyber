@@ -162,7 +162,13 @@ export const createApiClient = (
         }
       }
 
-      // v3 non-paginated: { data: T } → return T directly
+      // v3 non-paginated with meta — keep { data, meta } shape intact
+      // so downstream code can access result.data to get the model
+      if ('data' in res && res.meta && !Array.isArray(res.data)) {
+        return res
+      }
+
+      // v3 non-paginated without meta — unwrap { data: T } to T directly
       if ('data' in res && !Array.isArray(res.data)) {
         return res.data
       }

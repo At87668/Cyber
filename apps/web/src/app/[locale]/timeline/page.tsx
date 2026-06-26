@@ -84,7 +84,7 @@ export default function TimelinePage() {
   const t = useTranslations('home')
   const search = useSearchParams()
 
-  const year = search.get('year')
+  const year = search.get('year') ?? undefined
   const type = (search.get('type') || 'post') as 'post' | 'note'
   const nextType = {
     post: TimelineType.Post,
