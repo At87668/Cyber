@@ -162,9 +162,10 @@ export const createApiClient = (
         }
       }
 
-      // v3 non-paginated with meta — keep { data, meta } shape intact
-      // so downstream code can access result.data to get the model
-      if ('data' in res && res.meta && !Array.isArray(res.data)) {
+      // v3 non-paginated detail response with view meta — keep { data, meta }
+      // shape intact so downstream code can access result.data to get the model
+      // (e.g., note/post detail pages: meta = { view: 'detail', interaction, ... })
+      if ('data' in res && res.meta?.view && !Array.isArray(res.data)) {
         return res
       }
 
