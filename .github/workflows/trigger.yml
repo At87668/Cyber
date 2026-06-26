@@ -15,7 +15,7 @@ jobs:
         run: |
           # Set the required variables
           repo_owner="innei"
-          repo_name="cyberi-remote-deploy"
+          repo_name="shiroi-remote-deploy"
           event_type="trigger-workflow"
 
           curl -L \
