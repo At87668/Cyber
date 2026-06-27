@@ -46,13 +46,13 @@ import {
   PageTitle,
 } from '../(page-detail)/[slug]/pageExtra'
 import { PageMarkdown } from '../(page-detail)/[slug]/PageMarkdown'
-import { NoteMarkdown } from '../notes/[id]/NoteMarkdown'
+import { NoteMarkdown } from '../notes/[...id]/NoteMarkdown'
 import {
   IndentArticleContainer,
   NoteHeaderDate,
   NoteMarkdownImageRecordProvider,
   NoteTitle,
-} from '../notes/[id]/pageExtra'
+} from '../notes/[...id]/pageExtra'
 import {
   PostMarkdownImageRecordProvider,
   PostMetaBarInternal,

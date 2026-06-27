@@ -128,14 +128,42 @@ const isPaginateLike = (
 ): v is { data: unknown[]; pagination?: any } =>
   !!v && typeof v === 'object' && Array.isArray((v as any).data)
 
+/**
+ * Rewrite snake_case field names to the camelCase aliases the rest of the app
+ * expects. The v3 backend serializes some timestamp fields as snake_case
+ * (`created_at` / `modified_at`) but the rest of the codebase was written
+ * against the v2 camelCase field names (`created` / `modified`).
+ *
+ * Must run BEFORE `simpleCamelcaseKeys`, because that function would mangle
+ * `created_at` into `createdAt` (which doesn't match what the UI reads).
+ */
+const FIELD_ALIASES: Record<string, string> = {
+  created_at: 'created',
+  modified_at: 'modified',
+}
+
 const legacyTransformResponse = <T = any>(data: any): T => {
-  if (isPaginateLike(data)) {
+  const aliased = applyFieldAliases(data)
+  if (isPaginateLike(aliased)) {
     return {
-      ...simpleCamelcaseKeys(data),
+      ...simpleCamelcaseKeys(aliased),
       pagination: remapPagination(data.pagination),
     } as T
   }
-  return simpleCamelcaseKeys(data) as T
+  return simpleCamelcaseKeys(aliased) as T
+}
+
+const applyFieldAliases = (value: any): any => {
+  if (Array.isArray(value)) return value.map(applyFieldAliases)
+  if (value && typeof value === 'object') {
+    const out: Record<string, any> = {}
+    for (const [k, v] of Object.entries(value)) {
+      const newKey = FIELD_ALIASES[k] ?? k
+      out[newKey] = applyFieldAliases(v)
+    }
+    return out
+  }
+  return value
 }
 
 export const createApiClient = (
@@ -162,14 +190,7 @@ export const createApiClient = (
         }
       }
 
-      // v3 non-paginated detail response with view meta — keep { data, meta }
-      // shape intact so downstream code can access result.data to get the model
-      // (e.g., note/post detail pages: meta = { view: 'detail', interaction, ... })
-      if ('data' in res && res.meta?.view && !Array.isArray(res.data)) {
-        return res
-      }
-
-      // v3 non-paginated without meta — unwrap { data: T } to T directly
+      // v3 non-paginated: { data: T } → return T directly
       if ('data' in res && !Array.isArray(res.data)) {
         return res.data
       }

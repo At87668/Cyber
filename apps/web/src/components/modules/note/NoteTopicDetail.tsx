@@ -92,7 +92,11 @@ export const NoteTopicDetail: FC<{ topic: TopicModel }> = (props) => {
             <DividerVertical />
             <span className="inline-flex min-w-0 shrink">
               <Link
-                href={routeBuilder(Routes.Note, { id: data.data[0].nid })}
+                href={routeBuilder(Routes.Note, {
+                  id: data.data[0].nid,
+                  created: data.data[0].created,
+                  slug: data.data[0].slug,
+                })}
                 className="truncate"
               >
                 {data.data[0]?.title}
